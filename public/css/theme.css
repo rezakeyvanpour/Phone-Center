@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root{
+--bg-body: #0D1224;
+--body-text-color: #ffffff;
+--body-text-color2:#d2d2d2;
+--body-text-color3:#b5b5b5;
+--primary: #5427b0;
+--btn-bg-color: #5427b0;
+--border: #ffffff10;
+--box: #192139;
+}
+
+@font-face {
+    font-family: 'IRANYekan' ;
+    src: url(/assets/fonts/IRANYekanBold.ttf);
+    font-weight: bold;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'IRANYekan' ;
+    src: url(/assets/fonts/IRANYekanMedium.ttf);
+    font-weight:normal;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'IRANYekan' ;
+    src: url(/assets/fonts/IRANYekanRegular.ttf);
+    font-weight: normal;
+    font-style:normal;
+}
+@font-face {
+    font-family: 'Ray';
+    src: url(/assets/fonts/Ray_ExtraBlack.ttf);
+    font-weight: bold;
+    font-style: normal;
+}
+*{
+    box-sizing: border-box;
+    outline: none;
+    padding: 0;
+    margin: 0;
+}
+
+*,body{
+    background-color: var(--bg-body);
+    font-size: 0.8rem;
+    direction: rtl;
+    color: var(--body-text-color);
+    font-family: 'IRANYekan';
+    font-weight:900;
+}   
+a{
+    text-decoration: none;
+    background: none;
+    display:inline-block;
+}
+li{
+    color: var(--body-text-color2);
+}
+.svg-sprite{
+    display: none;
+    background: none;
+}
+.about-text-titr{
+    font-family: 'Ray';
+    word-spacing: 3px;
+    font-size: 1.5rem;
+    line-height: 40px;
+}
+h2{
+    font-size: 1rem;
+}
