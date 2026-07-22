@@ -1,144 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="/public/css/theme.css">
-    <link rel="stylesheet" href="/public/css/main.css">
-    <title>Phone_center</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Center</title>
+  <link rel="icon" href="/assets/images/gray.png">
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../output.css">
 </head>
+
 <body>
-    
-        <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
-            
-            <!-- menu -->
-            <symbol  id="menu" width="24px" height="24px" viewBox="0 0 24 24">
-                <g id="Stockholm-icons-/-Text-/-Menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                <rect id="Rectangle-20" fill="#ffffff" x="4" y="5" width="16" height="3" rx="1.5"></rect>
-                <path d="M5.5,15 L18.5,15 C19.3284271,15 20,15.6715729 20,16.5 C20,17.3284271 19.3284271,18 18.5,18 L5.5,18 C4.67157288,18 4,17.3284271 4,16.5 C4,15.6715729 4.67157288,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284271,10 20,10.6715729 20,11.5 C20,12.3284271 19.3284271,13 18.5,13 L5.5,13 C4.67157288,13 4,12.3284271 4,11.5 C4,10.6715729 4.67157288,10 5.5,10 Z" id="Combined-Shape" fill="#ffffff" opacity="1"></path>
-                </g>
-            </symbol>
+  <!-- SVG SPRITE -->
 
-            <!-- search -->
-            <symbol id="search" width="32px" height="32px" viewBox="0 0 24 24">
-                <g id="Stockholm-icons-/-General-/-Search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                    <path d="M14.2928932,16.7071068 C13.9023689,16.3165825 13.9023689,15.6834175 14.2928932,15.2928932 C14.6834175,14.9023689 15.3165825,14.9023689 15.7071068,15.2928932 L19.7071068,19.2928932 C20.0976311,19.6834175 20.0976311,20.3165825 19.7071068,20.7071068 C19.3165825,21.0976311 18.6834175,21.0976311 18.2928932,20.7071068 L14.2928932,16.7071068 Z" id="Path-2" fill="#d2d2d2" fill-rule="nonzero" opacity="1"></path>
-                    <path d="M11,16 C13.7614237,16 16,13.7614237 16,11 C16,8.23857625 13.7614237,6 11,6 C8.23857625,6 6,8.23857625 6,11 C6,13.7614237 8.23857625,16 11,16 Z M11,18 C7.13400675,18 4,14.8659932 4,11 C4,7.13400675 7.13400675,4 11,4 C14.8659932,4 18,7.13400675 18,11 C18,14.8659932 14.8659932,18 11,18 Z" id="Path" fill="#d2d2d2" fill-rule="nonzero"></path>
-                </g>
-            </symbol>
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="menu" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <rect fill="currentColor" x="4" y="5" width="16" height="3" rx="1.5"/>
+        <path d="M5.5,15 L18.5,15 C19.3284,15 20,15.6716 20,16.5 C20,17.3284 19.3284,18 18.5,18 L5.5,18 C4.6716,18 4,17.3284 4,16.5 C4,15.6716 4.6716,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284,10 20,10.6716 20,11.5 C20,12.3284 19.3284,13 18.5,13 L5.5,13 C4.6716,13 4,12.3284 4,11.5 C4,10.6716 4.6716,10 5.5,10 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="search" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M14.2929,16.7071 C13.9024,16.3166 13.9024,15.6834 14.2929,15.2929 C14.6834,14.9024 15.3166,14.9024 15.7071,15.2929 L19.7071,19.2929 C20.0976,19.6834 20.0976,20.3166 19.7071,20.7071 C19.3166,21.0976 18.6834,21.0976 18.2929,20.7071 L14.2929,16.7071 Z" fill="currentColor"/>
+        <path d="M11,16 C13.7614,16 16,13.7614 16,11 C16,8.2386 13.7614,6 11,6 C8.2386,6 6,8.2386 6,11 C6,13.7614 8.2386,16 11,16 Z M11,18 C7.134,18 4,14.866 4,11 C4,7.134 7.134,4 11,4 C14.866,4 18,7.134 18,11 C18,14.866 14.866,18 11,18 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="login" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <rect fill="currentColor" transform="translate(9,12) rotate(-270) translate(-9,-12)" x="8" y="6" width="2" height="12" rx="1"/>
+        <path d="M20,7.006 C19.4477,7.006 19,6.5586 19,6.0065 C19,5.4545 19.4477,5.0069 20,5.0069 L21,5.0069 C23.2091,5.0069 25,6.797 25,9.0052 L25,15.0017 C25,17.2099 23.2091,19 21,19 L9,19 C6.7909,19 5,17.2099 5,15.0017 L5,8.9983 C5,6.7901 6.7909,5 9,5 L10,5 C10.5523,5 11,5.4475 11,5.9996 C11,6.5516 10.5523,6.9991 10,6.9991 L9,6.9991 C7.8954,6.9991 7,7.8942 7,8.9983 L7,15.0017 C7,16.1058 7.8954,17.0009 9,17.0009 L21,17.0009 C22.1046,17.0009 23,16.1058 23,15.0017 L23,9.0052 C23,7.9011 22.1046,7.0061 21,7.0061 L20,7.0061 Z" fill="currentColor" transform="translate(15,12) rotate(-90) translate(-15,-12)"/>
+        <path d="M16.7929,9.7929 C17.1834,9.4024 17.8166,9.4024 18.2071,9.7929 C18.5976,10.1834 18.5976,10.8166 18.2071,11.2071 L15.2071,14.2071 C14.8166,14.5976 14.1834,14.5976 13.7929,14.2071 L10.7929,11.2071 C10.4024,10.8166 10.4024,10.1834 10.7929,9.7929 C11.1834,9.4024 11.8166,9.4024 12.2071,9.7929 L14.5,12.0858 L16.7929,9.7929 Z" fill="currentColor" transform="translate(14.5,12) rotate(-90) translate(-14.5,-12)"/>
+      </g>
+    </symbol>
+    <symbol id="cart" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M18.1446,11.8439 L17.4472,16.0287 C17.4464,16.0336 17.4455,16.0384 17.4446,16.0432 C17.3458,16.5866 16.8253,16.947 16.2819,16.8482 L4.913,14.7811 C4.5384,14.713 4.235,14.4381 4.1304,14.072 L2.3056,7.6852 C2.2801,7.5958 2.2671,7.5034 2.2671,7.4105 C2.2671,6.8582 2.7148,6.4105 3.2671,6.4105 L16.993,6.4105 L17.6062,3.7825 C17.7308,3.2485 18.2069,2.8707 18.7552,2.8707 L20.8201,2.8707 C21.4717,2.8707 22,3.399 22,4.0506 C22,4.7023 21.4717,5.2305 20.8201,5.2305 L19.6915,5.2305 L18.1446,11.8439 Z" fill="currentColor"/>
+        <path d="M6.5,21 C5.6716,21 5,20.3284 5,19.5 C5,18.6716 5.6716,18 6.5,18 C7.3284,18 8,18.6716 8,19.5 C8,20.3284 7.3284,21 6.5,21 Z M15.5,21 C14.6716,21 14,20.3284 14,19.5 C14,18.6716 14.6716,18 15.5,18 C16.3284,18 17,18.6716 17,19.5 C17,20.3284 16.3284,21 15.5,21 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="bag" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M14,9 L14,8 C14,6.8954 13.1046,6 12,6 C10.8954,6 10,6.8954 10,8 L10,9 L8,9 L8,8 C8,5.7909 9.7909,4 12,4 C14.2091,4 16,5.7909 16,8 L16,9 L14,9 Z M14,9 L14,8 C14,6.8954 13.1046,6 12,6 C10.8954,6 10,6.8954 10,8 L10,9 L8,9 L8,8 C8,5.7909 9.7909,4 12,4 C14.2091,4 16,5.7909 16,8 L16,9 L14,9 Z" fill="currentColor" opacity="1"/>
+        <path d="M6.8471,9 L17.1529,9 C17.6417,9 18.0589,9.3534 18.1393,9.8356 L19.6119,18.6712 C19.7935,19.7607 19.0574,20.7912 17.9679,20.9728 C17.8592,20.9909 17.7492,21 17.6391,21 L6.3609,21 C5.2564,21 4.3609,20.1046 4.3609,19 C4.3609,18.8898 4.37,18.7799 4.3881,18.6712 L5.8607,9.8356 C5.9411,9.3534 6.3583,9 6.8471,9 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+  </svg>
 
-            <!-- login -->
-            <symbol id="login" width="28px" height="28px" viewBox="0 0 24 24">
-                <g id="Stockholm-icons-/-Navigation-/-Sign-in" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                <rect id="Rectangle" fill="#d2d2d2" opacity="1" transform="translate(9.000000, 12.000000) rotate(-270.000000) translate(-9.000000, -12.000000) " x="8" y="6" width="2" height="12" rx="1"></rect>
-                <path d="M20,7.00607258 C19.4477153,7.00607258 19,6.55855153 19,6.00650634 C19,5.45446114 19.4477153,5.00694009 20,5.00694009 L21,5.00694009 C23.209139,5.00694009 25,6.7970243 25,9.00520507 L25,15.001735 C25,17.2099158 23.209139,19 21,19 L9,19 C6.790861,19 5,17.2099158 5,15.001735 L5,8.99826498 C5,6.7900842 6.790861,5 9,5 L10.0000048,5 C10.5522896,5 11.0000048,5.44752105 11.0000048,5.99956624 C11.0000048,6.55161144 10.5522896,6.99913249 10.0000048,6.99913249 L9,6.99913249 C7.8954305,6.99913249 7,7.89417459 7,8.99826498 L7,15.001735 C7,16.1058254 7.8954305,17.0008675 9,17.0008675 L21,17.0008675 C22.1045695,17.0008675 23,16.1058254 23,15.001735 L23,9.00520507 C23,7.90111468 22.1045695,7.00607258 21,7.00607258 L20,7.00607258 Z" id="Path-103" fill="#d2d2d2" fill-rule="nonzero" opacity="1" transform="translate(15.000000, 12.000000) rotate(-90.000000) translate(-15.000000, -12.000000) "></path>
-                <path d="M16.7928932,9.79289322 C17.1834175,9.40236893 17.8165825,9.40236893 18.2071068,9.79289322 C18.5976311,10.1834175 18.5976311,10.8165825 18.2071068,11.2071068 L15.2071068,14.2071068 C14.8165825,14.5976311 14.1834175,14.5976311 13.7928932,14.2071068 L10.7928932,11.2071068 C10.4023689,10.8165825 10.4023689,10.1834175 10.7928932,9.79289322 C11.1834175,9.40236893 11.8165825,9.40236893 12.2071068,9.79289322 L14.5,12.0857864 L16.7928932,9.79289322 Z" id="Path-104" fill="#d2d2d2" fill-rule="nonzero" transform="translate(14.500000, 12.000000) rotate(-90.000000) translate(-14.500000, -12.000000) "></path>
-                </g>
-            </symbol>
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <div class="header-top">
+      <div class="header-top-inner">
+        <div class="header-right">
+          <img src="../../assets/images/gray.png" alt="لوگو فروشگاه" class="logo">
 
-            <!-- cart -->
-            <symbol id="cart" width="28px" height="28px" viewBox="0 0 24 24">
-                <g id="Stockholm-icons-/-Shopping-/-Cart#1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <rect id="bound" x="0" y="0" width="24" height="24"></rect>
-                <path d="M18.1446364,11.84388 L17.4471627,16.0287218 C17.4463569,16.0335568 17.4455155,16.0383857 17.4446387,16.0432083 C17.345843,16.5865846 16.8252597,16.9469884 16.2818833,16.8481927 L4.91303792,14.7811299 C4.53842737,14.7130189 4.23500006,14.4380834 4.13039941,14.0719812 L2.30560137,7.68518803 C2.28007524,7.59584656 2.26712532,7.50338343 2.26712532,7.4104669 C2.26712532,6.85818215 2.71484057,6.4104669 3.26712532,6.4104669 L16.9929851,6.4104669 L17.606173,3.78251876 C17.7307772,3.24850086 18.2068633,2.87071314 18.7552257,2.87071314 L20.8200821,2.87071314 C21.4717328,2.87071314 22,3.39898039 22,4.05063106 C22,4.70228173 21.4717328,5.23054898 20.8200821,5.23054898 L19.6915238,5.23054898 L18.1446364,11.84388 Z" id="Combined-Shape" fill="#d2d2d2" opacity="1"></path>
-                <path d="M6.5,21 C5.67157288,21 5,20.3284271 5,19.5 C5,18.6715729 5.67157288,18 6.5,18 C7.32842712,18 8,18.6715729 8,19.5 C8,20.3284271 7.32842712,21 6.5,21 Z M15.5,21 C14.6715729,21 14,20.3284271 14,19.5 C14,18.6715729 14.6715729,18 15.5,18 C16.3284271,18 17,18.6715729 17,19.5 C17,20.3284271 16.3284271,21 15.5,21 Z" id="Combined-Shape" fill="#d2d2d2"></path>
-                </g>
-            </symbol>
+          <form class="search-form" role="search">
+            <svg class="search-icon"><use href="#search"></svg>
+            <input
+              type="search"placeholder="جستجو ..."class="search-input">
+          </form>
+        </div>
 
-            <!-- money -->
-             <symbol id="bag" width="28px" height="28px" viewBox="0 0 24 24>
-              <g id="Stockholm-icons-/-Shopping-/-Bag#1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <rect id="bound" x="0" y="0" width="50px" height="50px"></rect>
-              <path d="M14,9 L14,8 C14,6.8954305 13.1045695,6 12,6 C10.8954305,6 10,6.8954305 10,8 L10,9 L8,9 L8,8 C8,5.790861 9.790861,4 12,4 C14.209139,4 16,5.790861 16,8 L16,9 L14,9 Z M14,9 L14,8 C14,6.8954305 13.1045695,6 12,6 C10.8954305,6 10,6.8954305 10,8 L10,9 L8,9 L8,8 C8,5.790861 9.790861,4 12,4 C14.209139,4 16,5.790861 16,8 L16,9 L14,9 Z" id="Rectangle-58" fill="#d2d2d2" fill-rule="nonzero" opacity="0.8"></path>
-              <path d="M6.84712709,9 L17.1528729,9 C17.6417121,9 18.0589022,9.35341304 18.1392668,9.83560101 L19.611867,18.671202 C19.7934571,19.7607427 19.0574178,20.7911977 17.9678771,20.9727878 C17.8592143,20.9908983 17.7492409,21 17.6390792,21 L6.36092084,21 C5.25635134,21 4.36092084,20.1045695 4.36092084,19 C4.36092084,18.8898383 4.37002252,18.7798649 4.388133,18.671202 L5.86073316,9.83560101 C5.94109783,9.35341304 6.35828794,9 6.84712709,9 Z" id="Combined-Shape" fill="#d2d2d2"></path>
-              </g>   
+        <div class="header-left">
+          <a href="#" class="login-link">
+            <button class="btn-login">
+              <svg class="icon-login"><use href="#login" /></svg>
+              ورود یا ثبت نام
+            </button>
+          </a>
+          <button class="btn-cart" id="cartBtn" aria-label="سبد خرید">
+            <svg class="icon-cart"><use href="#cart" /></svg>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+          <button class="btn-hamburger" id="menuToggle" aria-label="منو">
+            <svg class="icon-hamburger"><use href="#menu" /></svg>
+          </button>
+        </div>
 
-            </symbol>
-        </svg>
+      </div>
+    </div>
 
+    <nav class="navbar" role="navigation">
+      <div class="navbar-inner">
+        <div class="nav-extra">
+          <svg class="icon-menu-extra"><use href="#menu" /></svg>
+          <span>انواع محصولات دیجیتال</span>
+        </div>
 
-        <!-- header -->
+        <ul class="nav-list" id="navList">
+          <li><a href="#">گوشی اپل</a></li>
+          <li><a href="#">گوشی سامسونگ</a></li>
+          <li><a href="#">گوشی شیائومی</a></li>
+          <li><a href="#">لوازم جانبی</a></li>
+        </ul>
 
-        <header class="header">
-          <section class="header-section">
-            <div class="header-section-box">
-              <div class="header-section-right"> 
-                <img src="/assets/images/gray.png" alt="لوگو فروشگاه">
-                 <search>
-                    <svg class="icon-search">   
-                      <use href="#search"></use>
-                    </svg>
-                   <input class="header-section-search" type="search" placeholder="جستجو ...">
-                 </search>
-               </div>
-              <div class="header-section-left">
-                <a href="">
-                  <button class="header-section-button">
-                    <svg class="icon-login">
-                      <use href="#login"></use>
-                    </svg>
-                    ورود یا ثبت نام
-                  </button>
-                </a>
-                <svg class="icon-cart">
-                  <use href="#cart"></use>
-                </svg>
-              </div>
-            </div>
-          </section>
-
-          <nav class="nav">
-            <div class="nav-box">
-              <a href="">
-                <div class="nav-menu">
-                  <svg class="icon-menu">
-                      <use href="#menu"></use>
-                  </svg>
-                    <h2 class="nav-menu-text">
-                      انواع محصولات دیجیتال
-                    </h2>
-                </div>
-              </a>
-              <ul class="nav-list-menu">
-                  <a href=""> <li> گوشی اپل</li></a>
-                  <a href=""> <li>گوشی سامسونگ</li></a>
-                  <a href=""> <li>گوشی شیائومی</li></a>
-                  <a href=""> <li>لوازم جانبی</li></a>
-              </ul>
-          </div>
-        </nav>
-      </header>
-
-      <!-- middle section -->
-
-      <main class="main">
-        <section class="about">
-          <div class="about-text">
-            <h2 class="about-text-titr">فروشگاه ما با بیش از هشت سال تجربه کاری در خدمت شماست!</h2>
-            <p class="about-text-paragraph">
-            در مجموعه ما با خیال راحت دستگاه موبایل مدنظرتون رو با مشاوره و راهنمایی تیم فروش، به صورت نقد و اقساط خرید کنید و علاوه بر این میتونید به انواع لوازم جانبی و کالاهای دیجیتال موجود در فروشگاه سر بزنید.   
-            </p>
-
-            <a href="http://" target="_blank">
-              <button class="about-text-button">سایر محصولات</button> 
-            </a>
-         </div>
-          <div class="about-bannar"></div>
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="#">گوشی اپل</a>
+          <a href="#">گوشی سامسونگ</a>
+          <a href="#">گوشی شیائومی</a>
+          <a href="#">لوازم جانبی</a>
+          <a href="#" class="mobile-login">
+            <svg><use href="#login"></svg>
+            ورود یا ثبت نام
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
 
 
+  <!-- MAIN -->
+  <main class="main-content" role="main">
+    <section class="about-section">
+      <div class="about-text">
+        <h2 class="about-title">فروشگاه ما با بیش از هشت سال تجربه کاری در خدمت شماست!</h2>
+        <p class="about-paragraph">
+          در مجموعه ما با خیال راحت دستگاه موبایل مدنظرتون رو با مشاوره و راهنمایی تیم فروش،
+          به صورت نقد و اقساط خرید کنید و علاوه بر این می‌تونید به انواع لوازم جانبی و کالاهای
+          دیجیتال موجود در فروشگاه سر بزنید.
+        </p>
+        <a href="#" class="btn-products">
+          <svg><use href="#bag" /></svg>
+          سایر محصولات
+        </a>
+      </div>
 
+      <div class="about-banner" style="background-image: url('../../assets/images/bannar.png')">
+      </div>
+    </section>
+  </main>
 
-        </section>
-      </main>
-
-
-
-        
-
+  
+  <script src="../../js/utils.js"></script>
+  <script src="../../js/main.js"></script>
 
 </body>
 </html>
