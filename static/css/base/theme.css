@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'IRANYekan';
+  src: url('/assets/fonts/IRANYekanBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IRANYekan';
+  src: url('/assets/fonts/IRANYekanMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IRANYekan';
+  src: url('/assets/fonts/IRANYekanRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ray';
+  src: url('/assets/fonts/Ray_ExtraBlack.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Color and theme variables */
+:root {
+  --bg-body: #040a2b;
+  --body-text-color: #ffffff;
+  --body-text-color2: #e1e1e1;
+  --body-text-color3: #b5b5b5;
+  --primary: #5427b0;
+  --btn-bg-color: #5427b0;
+  --border: #ffffff10;
+  --box: #192139;
+  --shadow-hover: 0 8px 25px rgba(84, 39, 176, 0.4);
+  --transition-speed: 0.25s;
+
+  --radius-md: 8px;      
+  --radius-lg: 15px;
+  --radius-xl: 24px;
+  --btn-height: 44px; 
+  --btn-height-sm: 38px;
+  --shadow-hover: 0 8px 25px rgba(84, 39, 176, 0.35);
+  --scale-hover: 1.03;
+  --scale-active: 0.97;
+}
+
+/* National styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+html {
+  font-size: 0.8rem;
+}
+
+body {
+  font-family: 'IRANYekan', sans-serif;
+  font-weight: 600;
+  background-color: var(--bg-body);
+  background-image: linear-gradient(120deg, #040b33,#030825);   
+  color: var(--body-text-color);
+  direction: rtl;
+  min-height: 200vh;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+}
+
+.font-ray {
+  font-family: 'Ray', sans-serif;
+  font-weight: 900;
+}
+
+.svg-sprite {
+  display: none;
+}

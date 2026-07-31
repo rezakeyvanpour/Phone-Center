@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Phone Center</title>
   <link rel="icon" href="/assets/images/gray.png">
-  <link rel="stylesheet" href="../css/theme.css">
-  <link rel="stylesheet" href="../css/main.css">
-  <link rel="stylesheet" href="../output.css">
+  <link rel="stylesheet" href="/static/css/base/main.css">
+  <link rel="stylesheet" href="/static/css/base/theme.css">
+  <link rel="stylesheet" href="/static/css/output.css">
 </head>
 
 <body>
@@ -47,13 +47,13 @@
       <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect x="0" y="0" width="24" height="24"/>
         <path d="M14,9 L14,8 C14,6.8954 13.1046,6 12,6 C10.8954,6 10,6.8954 10,8 L10,9 L8,9 L8,8 C8,5.7909 9.7909,4 12,4 C14.2091,4 16,5.7909 16,8 L16,9 L14,9 Z M14,9 L14,8 C14,6.8954 13.1046,6 12,6 C10.8954,6 10,6.8954 10,8 L10,9 L8,9 L8,8 C8,5.7909 9.7909,4 12,4 C14.2091,4 16,5.7909 16,8 L16,9 L14,9 Z" fill="currentColor" opacity="1"/>
-        <path d="M6.8471,9 L17.1529,9 C17.6417,9 18.0589,9.3534 18.1393,9.8356 L19.6119,18.6712 C19.7935,19.7607 19.0574,20.7912 17.9679,20.9728 C17.8592,20.9909 17.7492,21 17.6391,21 L6.3609,21 C5.2564,21 4.3609,20.1046 4.3609,19 C4.3609,18.8898 4.37,18.7799 4.3881,18.6712 L5.8607,9.8356 C5.9411,9.3534 6.3583,9 6.8471,9 Z" fill="currentColor"/>
+        <path d="M6.8471,9 L17.1529,9 C17.6417,9 18.0589,9.3534 18.1393,9.8356 L19.6119,18.6712 C19.7935,19.7607 19.0574,20.7912 17.9679,20.9728 C17.8592,20.9909 17.7492,21 17.6391,21 L6.3609,21 C5.2564,21 4.3609,20.1046 4.3609,19 C4.3609,18.8898 4.37,18.7799 4.3881,18.6712 L5.8607,9.8356 C5.9411,9.3534 6.3583,9 6.8471,9 Z" fill="currentColor" opacity="1"/>
       </g>
     </symbol>
   </svg>
 
   <!-- HEADER -->
-  <header class="header" role="banner">
+  <header class="header">
     <div class="header-top">
       <div class="header-top-inner">
         <div class="header-right">
@@ -67,8 +67,8 @@
         </div>
 
         <div class="header-left">
-          <a href="#" class="login-link">
-            <button class="btn-login">
+          <a href="/templates/login/login.html" class="login-link">
+            <button class="btn-login w-[160px] h-[45px]">
               <svg class="icon-login"><use href="#login" /></svg>
               ورود یا ثبت نام
             </button>
@@ -81,7 +81,6 @@
             <svg class="icon-hamburger"><use href="#menu" /></svg>
           </button>
         </div>
-
       </div>
     </div>
 
@@ -124,16 +123,27 @@
           به صورت نقد و اقساط خرید کنید و علاوه بر این می‌تونید به انواع لوازم جانبی و کالاهای
           دیجیتال موجود در فروشگاه سر بزنید.
         </p>
-        <a href="#" class="btn-products">
+        <a href="#" class="btn-products w-[170px] h-[47px]">
           <svg><use href="#bag" /></svg>
-          سایر محصولات
+        مشاهده محصولات
         </a>
       </div>
 
-      <div class="about-banner" style="background-image: url('../../assets/images/bannar.png')">
+    <div class="about-banner">
       </div>
     </section>
   </main>
+
+  <section class="trust-boxes flex main-box w-full h-48 gap-28 justify-center text-center text-xl mt-8">
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8 ">ضمانت اصالت کالا</div>
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8">پرداخت اقساطی</div>
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8">پشتیبانی 24 ساعته</div>
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8">ارسال رایگان</div>
+      
+    </section>
+
+  
+
 
   
   <script src="../../js/utils.js"></script>
