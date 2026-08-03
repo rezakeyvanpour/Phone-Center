@@ -102,3 +102,90 @@
       #chk:checked ~ .signup label{
         transform: scale(.6);
       }
+
+      .main {
+        transition: all 0.8s ease;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .login {
+        backdrop-filter: blur(4px);
+      }
+
+      button {
+        background: linear-gradient(135deg, #5427b0, #7c4cdb);
+        box-shadow: 0 4px 15px rgba(84, 39, 176, 0.3);
+        letter-spacing: 1px;
+      }
+
+      button:hover {
+        background: linear-gradient(135deg, #6a3bc8, #8a5cdb);
+        box-shadow: 0 8px 25px rgba(84, 39, 176, 0.4);
+      }
+
+      .input-group input:focus {
+        border: 2px solid #5427b0 !important;
+        box-shadow: 0 0 20px rgba(84, 39, 176, 0.2) !important;
+      }
+
+      .toggle-password {
+        font-size: 1.2rem;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        user-select: none;
+      }
+
+      .toggle-password:hover {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      .toggle-password.active {
+        opacity: 1;
+      }
+
+      .error-msg {
+        color: #ef4444;
+        font-size: 0.7rem;
+        display: block;
+        margin-top: 6px;
+        text-align: right;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .success-msg {
+        position: fixed;
+        top: 30px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        background: #22c55e;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        z-index: 999;
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        font-size: 0.95rem;
+        direction: rtl;
+      }
+
+      .success-msg.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        20% { transform: translateX(-8px); }
+        40% { transform: translateX(8px); }
+        60% { transform: translateX(-5px); }
+        80% { transform: translateX(5px); }
+      }

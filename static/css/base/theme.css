@@ -69,7 +69,7 @@ body {
   background-image: linear-gradient(120deg, #040b33,#030825);   
   color: var(--body-text-color);
   direction: rtl;
-  min-height: 200vh;
+  min-height: 250vh;
 }
 
 a {
