@@ -1,0 +1,122 @@
+
+.detail-container {
+  width: 100%;
+  padding: 30px 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-wrapper {
+  width: 100%;
+  max-width: 1200px;
+  background-color: var(--box);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.detail-image {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+
+.detail-image img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background-color: #0a0f1f;
+}
+
+.detail-info {
+  flex: 2 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-info h1 {
+  font-family: 'Ray', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--body-text-color);
+}
+
+.detail-info .spec {
+  color: var(--body-text-color3);
+  font-size: 0.9rem;
+}
+
+.detail-info .price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--body-text-color2);
+  direction: ltr;
+}
+
+.detail-info .region {
+  color: var(--body-text-color3);
+  font-size: 0.85rem;
+}
+
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.btn-add-cart-detail {
+  padding: 12px 30px;
+  background-color: var(--btn-bg-color);
+  border: none;
+  border-radius: var(--radius-md);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-add-cart-detail:hover {
+  background-color: #6a3bc8;
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.btn-add-cart-detail.added {
+  background-color: #22c55e;
+}
+
+
+@media (max-width: 768px) {
+  .detail-wrapper {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  .detail-image {
+    flex: none;
+    width: 100%;
+  }
+  .detail-info h1 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-container {
+    padding: 10px;
+  }
+  .detail-wrapper {
+    padding: 15px;
+  }
+  .detail-info .price {
+    font-size: 1.2rem;
+  }
+}

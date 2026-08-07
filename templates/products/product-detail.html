@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>همه محصولات | Phone Center</title>
+  <title>جزئیات محصول | Phone Center</title>
   <link rel="icon" href="/assets/images/gray.png" />
   <link rel="stylesheet" href="/static/css/base/theme.css" />
   <link rel="stylesheet" href="/static/css/base/main.css" />
   <link rel="stylesheet" href="/static/css/output.css" />
-  <link rel="stylesheet" href="/static/css/products/products.css" />
+  <link rel="stylesheet" href="/static/css/products/product-detail.css" />
 </head>
 <body>
 
@@ -27,9 +27,9 @@
     <div class="header-top">
       <div class="header-top-inner">
         <div class="header-right">
-          <a href="/" class="back-home-btn">
+          <a href="/templates/products/products.html" class="back-home-btn">
             <svg width="22" height="22" viewBox="0 0 24 24"><use href="#arrow-left" /></svg>
-            <span>خانه</span>
+            <span>بازگشت</span>
           </a>
           <img src="/assets/images/gray.png" alt="لوگو" class="logo" style="height:45px;" />
           <form class="search-form" role="search">
@@ -50,63 +50,46 @@
           <svg class="icon-menu-extra"><use href="#menu" /></svg>
           <span>دسته‌بندی</span>
           <ul class="dropdown-menu">
-            <li><a href="#" data-filter="all">همه</a></li>
-            <li><a href="#" data-filter="iphone">آیفون</a></li>
-            <li><a href="#" data-filter="samsung">سامسونگ</a></li>
-            <li><a href="#" data-filter="xiaomi">شیائومی</a></li>
-            <li><a href="#" data-filter="tablet">تبلت</a></li>
-            <li><a href="#" data-filter="macbook">مک‌بوک</a></li>
-            <li><a href="#" data-filter="accessory">لوازم جانبی</a></li>
-            <li><a href="#" data-filter="console">کنسول</a></li>
+            <li><a href="/templates/products/products.html?filter=all">همه</a></li>
+            <li><a href="/templates/products/products.html?filter=iphone">آیفون</a></li>
+            <li><a href="/templates/products/products.html?filter=samsung">سامسونگ</a></li>
+            <li><a href="/templates/products/products.html?filter=xiaomi">شیائومی</a></li>
+            <li><a href="/templates/products/products.html?filter=tablet">تبلت</a></li>
+            <li><a href="/templates/products/products.html?filter=macbook">مک‌بوک</a></li>
+            <li><a href="/templates/products/products.html?filter=accessory">لوازم جانبی</a></li>
+            <li><a href="/templates/products/products.html?filter=console">کنسول</a></li>
           </ul>
         </div>
         <ul class="nav-list">
-          <li><a href="#" data-filter="iphone">آیفون</a></li>
-          <li><a href="#" data-filter="samsung">سامسونگ</a></li>
-          <li><a href="#" data-filter="xiaomi">شیائومی</a></li>
-          <li><a href="#" data-filter="tablet">تبلت</a></li>
-          <li><a href="#" data-filter="macbook">مک‌بوک</a></li>
+          <li><a href="/templates/products/products.html?filter=iphone">آیفون</a></li>
+          <li><a href="/templates/products/products.html?filter=samsung">سامسونگ</a></li>
+          <li><a href="/templates/products/products.html?filter=xiaomi">شیائومی</a></li>
+          <li><a href="/templates/products/products.html?filter=tablet">تبلت</a></li>
+          <li><a href="/templates/products/products.html?filter=macbook">مک‌بوک</a></li>
         </ul>
         <div class="mobile-menu" id="mobileMenu">
-          <a href="#" data-filter="all">همه</a>
-          <a href="#" data-filter="iphone">آیفون</a>
-          <a href="#" data-filter="samsung">سامسونگ</a>
-          <a href="#" data-filter="xiaomi">شیائومی</a>
-          <a href="#" data-filter="tablet">تبلت</a>
-          <a href="#" data-filter="macbook">مک‌بوک</a>
-          <a href="#" data-filter="accessory">لوازم جانبی</a>
-          <a href="#" data-filter="console">کنسول</a>
+          <a href="/templates/products/products.html?filter=all">همه</a>
+          <a href="/templates/products/products.html?filter=iphone">آیفون</a>
+          <a href="/templates/products/products.html?filter=samsung">سامسونگ</a>
+          <a href="/templates/products/products.html?filter=xiaomi">شیائومی</a>
+          <a href="/templates/products/products.html?filter=tablet">تبلت</a>
+          <a href="/templates/products/products.html?filter=macbook">مک‌بوک</a>
+          <a href="/templates/products/products.html?filter=accessory">لوازم جانبی</a>
+          <a href="/templates/products/products.html?filter=console">کنسول</a>
           <a href="#" class="mobile-login"><svg><use href="#login" /></svg>ورود</a>
         </div>
       </div>
     </nav>
   </header>
 
-  
-  <main class="main-content" style="padding-top:10px;">
-    <div class="w-full max-w-[1400px] mx-auto px-[18px]">
-      <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-3 border-b-2 border-[var(--border)]">
-        <h1 class="font-ray text-2xl font-black text-white relative after:content-[''] after:absolute after:bottom-[-14px] after:right-0 after:w-[50px] after:h-[3px] after:bg-[var(--primary)] after:rounded-[2px]">
-          همه محصولات
-        </h1>
-        <div class="filter-wrapper flex flex-nowrap gap-2 overflow-x-auto pb-1 scrollbar-thin">
-          <button class="filter-btn active px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="all">همه</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="iphone">آیفون</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="samsung">سامسونگ</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="xiaomi">شیائومی</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="tablet">تبلت</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="macbook">مک‌بوک</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="accessory">لوازم جانبی</button>
-          <button class="filter-btn px-4 py-1.5 rounded-md border border-[var(--border)] text-sm font-medium text-[var(--body-text-color2)] hover:bg-[var(--box)] transition-colors whitespace-nowrap" data-filter="console">کنسول</button>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6" id="productsGrid">
-        
-      </div>
+
+  <main class="detail-container">
+    <div class="detail-wrapper" id="productDetail">
+      
     </div>
   </main>
 
-  
+
   <footer class="footer-mini">
     <div class="max-w-[1400px] mx-auto flex flex-wrap items-center justify-between gap-3">
       <p class="text-[var(--body-text-color3)] text-sm">© ۱۴۰۴ <strong class="text-[var(--primary)]">Phone Center</strong> - تمامی حقوق محفوظ است.</p>
@@ -118,7 +101,7 @@
     </div>
   </footer>
 
-  
+
   <div id="cartModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4" style="display:none;">
     <div class="bg-[var(--box)] rounded-[var(--radius-lg)] w-full max-w-2xl max-h-[80vh] overflow-hidden border border-[var(--border)] shadow-2xl">
       <div class="flex items-center justify-between p-4 border-b border-[var(--border)]">
@@ -149,6 +132,6 @@
 
   <script src="/static/js/data.js"></script>
   <script src="/static/js/utils.js"></script>
-  <script src="/static/js/products.js"></script>
+  <script src="/static/js/product-detail.js"></script>
 </body>
 </html>
