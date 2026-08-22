@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Center</title>
+  <link rel="icon" href="/assets/images/gray.png">
+  <link rel="stylesheet" href="/static/css/base/main.css">
+  <link rel="stylesheet" href="/static/css/base/theme.css">
+  <link rel="stylesheet" href="/static/css/output.css">
+</head>
+
+<body>
+  <!-- SVG SPRITE -->
+
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="menu" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <rect fill="currentColor" x="4" y="5" width="16" height="3" rx="1.5"/>
+        <path d="M5.5,15 L18.5,15 C19.3284,15 20,15.6716 20,16.5 C20,17.3284 19.3284,18 18.5,18 L5.5,18 C4.6716,18 4,17.3284 4,16.5 C4,15.6716 4.6716,15 5.5,15 Z M5.5,10 L18.5,10 C19.3284,10 20,10.6716 20,11.5 C20,12.3284 19.3284,13 18.5,13 L5.5,13 C4.6716,13 4,12.3284 4,11.5 C4,10.6716 4.6716,10 5.5,10 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="search" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M14.2929,16.7071 C13.9024,16.3166 13.9024,15.6834 14.2929,15.2929 C14.6834,14.9024 15.3166,14.9024 15.7071,15.2929 L19.7071,19.2929 C20.0976,19.6834 20.0976,20.3166 19.7071,20.7071 C19.3166,21.0976 18.6834,21.0976 18.2929,20.7071 L14.2929,16.7071 Z" fill="currentColor"/>
+        <path d="M11,16 C13.7614,16 16,13.7614 16,11 C16,8.2386 13.7614,6 11,6 C8.2386,6 6,8.2386 6,11 C6,13.7614 8.2386,16 11,16 Z M11,18 C7.134,18 4,14.866 4,11 C4,7.134 7.134,4 11,4 C14.866,4 18,7.134 18,11 C18,14.866 14.866,18 11,18 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="login" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <rect fill="currentColor" transform="translate(9,12) rotate(-270) translate(-9,-12)" x="8" y="6" width="2" height="12" rx="1"/>
+        <path d="M20,7.006 C19.4477,7.006 19,6.5586 19,6.0065 C19,5.4545 19.4477,5.0069 20,5.0069 L21,5.0069 C23.2091,5.0069 25,6.797 25,9.0052 L25,15.0017 C25,17.2099 23.2091,19 21,19 L9,19 C6.7909,19 5,17.2099 5,15.0017 L5,8.9983 C5,6.7901 6.7909,5 9,5 L10,5 C10.5523,5 11,5.4475 11,5.9996 C11,6.5516 10.5523,6.9991 10,6.9991 L9,6.9991 C7.8954,6.9991 7,7.8942 7,8.9983 L7,15.0017 C7,16.1058 7.8954,17.0009 9,17.0009 L21,17.0009 C22.1046,17.0009 23,16.1058 23,15.0017 L23,9.0052 C23,7.9011 22.1046,7.0061 21,7.0061 L20,7.0061 Z" fill="currentColor" transform="translate(15,12) rotate(-90) translate(-15,-12)"/>
+        <path d="M16.7929,9.7929 C17.1834,9.4024 17.8166,9.4024 18.2071,9.7929 C18.5976,10.1834 18.5976,10.8166 18.2071,11.2071 L15.2071,14.2071 C14.8166,14.5976 14.1834,14.5976 13.7929,14.2071 L10.7929,11.2071 C10.4024,10.8166 10.4024,10.1834 10.7929,9.7929 C11.1834,9.4024 11.8166,9.4024 12.2071,9.7929 L14.5,12.0858 L16.7929,9.7929 Z" fill="currentColor" transform="translate(14.5,12) rotate(-90) translate(-14.5,-12)"/>
+      </g>
+    </symbol>
+    <symbol id="cart" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M18.1446,11.8439 L17.4472,16.0287 C17.4464,16.0336 17.4455,16.0384 17.4446,16.0432 C17.3458,16.5866 16.8253,16.947 16.2819,16.8482 L4.913,14.7811 C4.5384,14.713 4.235,14.4381 4.1304,14.072 L2.3056,7.6852 C2.2801,7.5958 2.2671,7.5034 2.2671,7.4105 C2.2671,6.8582 2.7148,6.4105 3.2671,6.4105 L16.993,6.4105 L17.6062,3.7825 C17.7308,3.2485 18.2069,2.8707 18.7552,2.8707 L20.8201,2.8707 C21.4717,2.8707 22,3.399 22,4.0506 C22,4.7023 21.4717,5.2305 20.8201,5.2305 L19.6915,5.2305 L18.1446,11.8439 Z" fill="currentColor"/>
+        <path d="M6.5,21 C5.6716,21 5,20.3284 5,19.5 C5,18.6716 5.6716,18 6.5,18 C7.3284,18 8,18.6716 8,19.5 C8,20.3284 7.3284,21 6.5,21 Z M15.5,21 C14.6716,21 14,20.3284 14,19.5 C14,18.6716 14.6716,18 15.5,18 C16.3284,18 17,18.6716 17,19.5 C17,20.3284 16.3284,21 15.5,21 Z" fill="currentColor"/>
+      </g>
+    </symbol>
+    <symbol id="bag" viewBox="0 0 24 24">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect x="0" y="0" width="24" height="24"/>
+        <path d="M14,9 L14,8 C14,6.8954 13.1046,6 12,6 C10.8954,6 10,6.8954 10,8 L10,9 L8,9 L8,8 C8,5.7909 9.7909,4 12,4 C14.2091,4 16,5.7909 16,8 L16,9 L14,9 Z M14,9 L14,8 C14,6.8954 13.1046,6 12,6 C10.8954,6 10,6.8954 10,8 L10,9 L8,9 L8,8 C8,5.7909 9.7909,4 12,4 C14.2091,4 16,5.7909 16,8 L16,9 L14,9 Z" fill="currentColor" opacity="1"/>
+        <path d="M6.8471,9 L17.1529,9 C17.6417,9 18.0589,9.3534 18.1393,9.8356 L19.6119,18.6712 C19.7935,19.7607 19.0574,20.7912 17.9679,20.9728 C17.8592,20.9909 17.7492,21 17.6391,21 L6.3609,21 C5.2564,21 4.3609,20.1046 4.3609,19 C4.3609,18.8898 4.37,18.7799 4.3881,18.6712 L5.8607,9.8356 C5.9411,9.3534 6.3583,9 6.8471,9 Z" fill="currentColor" opacity="1"/>
+      </g>
+    </symbol>
+
+    <symbol id="send" width="70px" height="70px" viewBox="0 0 512 512">
+    <style type="text/css">
+      .st0{fill:#b5b5b5;}
+      .st1{fill:#5427b0;}
+    </style>
+    <g>
+    <path class="st0" d="M382.7,71.8H82.4l-2.2,21.8h86.4c11.6,0,21,9.4,21,21s-9.4,21-21,21H76l-6.1,61.7h96.7c11.6,0,21,9.4,21,21   s-9.4,21-21,21H65.7l-6.1,61.7h107c11.6,0,21,9.4,21,21c0,11.6-9.4,21-21,21H55.4l-6,60.2h20.2c0-28.1,22.8-50.9,50.9-50.9   s50.9,22.8,50.9,50.9h178.3L369.2,208L382.7,71.8z M166.6,291.2h-55.3c-11.6,0-21-9.4-21-21c0-11.6,9.4-21,21-21h55.3   c11.6,0,21,9.4,21,21C187.6,281.8,178.2,291.2,166.6,291.2z M166.6,187.5h-55.3c-11.6,0-21-9.4-21-21c0-11.6,9.4-21,21-21h55.3   c11.6,0,21,9.4,21,21C187.6,178,178.2,187.5,166.6,187.5z"/>
+    <path class="st0" d="M437.8,208h-54.5l-0.1,1.4l-19.2,193.9h4.8c0-28.1,22.8-50.9,50.9-50.9c28.1,0,50.9,22.8,50.9,50.9h18.9v-129   L437.8,208z M457.6,299.3h-69.2l7.9-59.6h25.8l35.4,45.4V299.3z"/>
+    <path class="st1" d="M419.7,366.3c-20.4,0-36.9,16.5-36.9,36.9c0,20.4,16.5,36.9,36.9,36.9c20.4,0,36.9-16.5,36.9-36.9   C456.6,382.9,440,366.3,419.7,366.3z"/>
+    <circle class="st1" cx="120.6" cy="403.3" r="36.9"/>
+    <path class="st1" d="M29.6,121.6h137c3.9,0,7-3.1,7-7s-3.1-7-7-7h-137c-3.9,0-7,3.1-7,7S25.7,121.6,29.6,121.6z"/>
+    <path class="st1" d="M166.6,159.5h-55.3c-3.9,0-7,3.1-7,7s3.1,7,7,7h55.3c3.9,0,7-3.1,7-7S170.5,159.5,166.6,159.5z"/>
+    <path class="st1" d="M29.6,225.3h137c3.9,0,7-3.1,7-7s-3.1-7-7-7h-137c-3.9,0-7,3.1-7,7S25.7,225.3,29.6,225.3z"/>
+    <path class="st1" d="M166.6,263.2h-55.3c-3.9,0-7,3.1-7,7s3.1,7,7,7h55.3c3.9,0,7-3.1,7-7S170.5,263.2,166.6,263.2z"/>
+    <path class="st1" d="M173.6,322.1c0-3.9-3.1-7-7-7h-137c-3.9,0-7,3.1-7,7s3.1,7,7,7h137C170.5,329.1,173.6,325.9,173.6,322.1z"/>
+    </g>
+    </symbol>
+
+    <symbol id="Support" width="70px" height="70px" viewBox="0 0 512 512">
+    <g>
+    <path class="st0" d="M243.9,379.6c-0.3-0.5-0.6-1.1-1-1.6c-7.3-11.9-22.4-17.5-35.2-11.1c-0.3,0.2-0.5,0.3-0.8,0.4   c-7.6,4-11.7,6.2-19.6,10.4c-7,3.7-16.2,0.1-20.3-8.2c-9.8-20.6-18.4-41.4-25.7-62.5c-2.9-8.3-5.6-16.7-8.1-25.1   c-5.2-18.8-9.4-37.8-12.8-57.2c-2-11.6-3.7-23.2-5.1-35c-0.9-9.2,4.9-17.2,12.8-17.8c1.3-0.1,2.4-0.2,3.5-0.3   c7-0.5,11.5-0.8,19.5-1.4c14.3-1.4,24.1-14.2,23.9-28.1c-0.2-12.3-0.2-19.3,0.4-30.1c0.1-1.8,0.2-3.6,0.3-5.6   c0.6-13.9-8.6-27.3-22.9-29.2c-4.3-0.5-7.6-0.8-10.8-1.2c-3-0.3-6.1-0.7-10.1-1.1c-20.4-2.2-90.4-6.8-94.9,62.8   c1.2,56.7,9.2,111.8,23.9,164.9c15.7,52.8,38.2,103.7,67.3,152.4c40.9,56.6,97.7,15.5,113.8,2.8c6.6-5.2,9.9-7.8,16.5-13   c4.4-3.7,7.1-8.4,8.4-13.5c1.9-7.8,0.3-16.5-4.5-23.4C254.6,396.7,250.7,390.7,243.9,379.6z"/>
+    <path class="st0" d="M279.6,274h-38.7c-3.9,0-7,3.1-7,7s3.1,7,7,7h25.2v16.1c0,3.9,3.1,7,7,7c3.9,0,7-3.1,7-7V288   c17.8-0.3,32.2-14.8,32.2-32.7c0-18-14.7-32.7-32.7-32.7h-13c-10.3,0-18.7-8.4-18.7-18.7c0-10.3,8.4-18.7,18.7-18.7h38.7   c3.9,0,7-3.1,7-7c0-3.9-3.1-7-7-7h-25.2v-16.1c0-3.9-3.1-7-7-7c-3.9,0-7,3.1-7,7v16.1c-17.8,0.3-32.2,14.8-32.2,32.7   c0,18,14.7,32.7,32.7,32.7h13c10.3,0,18.7,8.4,18.7,18.7C298.3,265.6,289.9,274,279.6,274z"/>
+    <path class="st1" d="M273.1,27.8c-42.8,0-82.6,13.3-115.2,36.1c17.6,3.8,30.4,19.2,31.8,37.7c24-15.7,52.6-24.8,83.4-24.8   c84.4,0,152.8,68.4,152.8,152.8c0,84.4-68.4,152.8-152.8,152.8c-3.8,0-7.6-0.1-11.3-0.4c3.6,5.7,7,10.6,12.1,17.9l0.1,0.1   c6.4,9.3,9,20.5,7.3,31.3c107.7-4.3,193.6-92.9,193.6-201.6C474.9,118.2,384.6,27.8,273.1,27.8z"/>
+    </g>
+    </symbol>
+
+    <symbol id="Installments" width="70px" height="70px" viewBox="0 0 512 512">
+    <g>
+    <path class="st0" d="M114.9,201.8h291.7c3,0,5.5-2.5,5.5-5.5v-78c0-3-2.5-5.5-5.5-5.5h-32.4v58.5H133.4v-58.5h-18.5   c-12.3,0-23.4,5-31.5,13c-8,8-13,19.2-13,31.4C70.4,181.8,90.3,201.8,114.9,201.8z"/>
+    <path class="st1" d="M418.7,289.1H273.3c-17.7,0-32,14.3-32,32c0,17.7,14.3,32,32,32h146.3c4.6,0,8.8-1.4,12.3-3.8   c1.2-0.8,2.3-1.7,3.3-2.7c4-4,6.4-9.5,6.4-15.5v-64.9C441.6,278.8,431.3,289.1,418.7,289.1z"/>
+    <path class="st0" d="M227.3,321.1c0-25.4,20.6-46,46-46h137.1c1.1-2.7,1.8-5.7,1.8-8.9V215c-1.7,0.5-3.6,0.8-5.5,0.8H114.9   c-17.8,0-33.8-8-44.5-20.6V410c0,24.5,19.9,44.5,44.5,44.5h291.7c3,0,5.5-2.5,5.5-5.5v-81.9H273.3   C247.9,367.1,227.3,346.5,227.3,321.1z"/>
+    <path class="st0" d="M426.1,159.4v106.8c8.2-1,15.5-12.7,15.5-20.2v-63.1C441.6,172.3,435.2,163.3,426.1,159.4z"/>
+    <path class="st0" d="M426.1,449c0,1.2-0.1,2.4-0.3,3.5c9.3-3.8,15.8-13,15.8-23.6v-69.3c-4.5,3.4-9.7,5.9-15.5,6.9V449z"/>
+    <path class="st1" d="M179.4,116.6c4.5,0,8.8-1.4,12.2-3.8c3.6-2.5,6.4-6,8-10.1c0.9-2.4,1.4-5,1.4-7.8h53.2c0,7.4,3.7,14,9.4,17.9   c3.5,2.4,7.7,3.8,12.2,3.8v40.7h32V57.5H147.4v99.8h32V116.6z"/>
+    <rect class="st0" height="99.8" width="38.3" x="322" y="57.5"/>
+    <path class="st0" d="M243.1,108.9h-30.8c-2.7,6.3-7.1,11.6-12.7,15.5c-1.9,1.3-4,2.5-6.1,3.4v29.5H262v-29.5   c-2.2-0.9-4.2-2.1-6.2-3.4C250.1,120.5,245.8,115.1,243.1,108.9z"/>
+    </g>
+    </symbol>
+
+    <symbol id="Warranty" width="70px" height="70px" viewBox="0 0 512 512">
+    <g>
+    <path class="st0" d="M435.6,140.5c-2.9-2.6-7.3-2.3-9.9,0.5c-2.6,2.9-2.3,7.3,0.5,9.9c10.7,9.6,16.5,22.8,16.5,37.2   c0,12.4-4.6,24.4-13,33.6c-2.6,2.9-2.4,7.3,0.5,9.9c1.3,1.2,3,1.8,4.7,1.8c1.9,0,3.8-0.8,5.2-2.3c10.7-11.8,16.6-27.1,16.6-43   C456.8,169.7,449.2,152.7,435.6,140.5z"/>
+    <path class="st0" d="M327.6,34.4c2.7-0.4,5.5-0.7,8.2-0.7c24.3,0,45.5,18.1,49.5,42.1c0.6,3.4,3.5,5.9,6.9,5.9c0.4,0,0.8,0,1.1-0.1   c3.8-0.6,6.4-4.2,5.8-8c-5-30.7-32.2-53.8-63.3-53.8c-3.5,0-7,0.3-10.5,0.9c-3.8,0.6-6.4,4.2-5.8,8C320.2,32.5,323.8,35,327.6,34.4   z"/>
+    <path class="st0" d="M107.9,96c0.1,0,0.3,0,0.4,0c3.7,0,6.8-2.9,7-6.6c1.6-26.4,23.6-47.1,50-47.1c1,0,2.1,0,3.2,0.1   c3.9,0.2,7.2-2.7,7.4-6.5c0.2-3.9-2.7-7.2-6.5-7.4c-1.3-0.1-2.7-0.1-4-0.1c-33.9,0-62,26.5-64,60.3C101.1,92.5,104.1,95.8,107.9,96   z"/>
+    <path class="st0" d="M85.8,239.2c-10.7-9.6-16.5-22.8-16.5-37.2c0-12.4,4.6-24.4,13-33.6c2.6-2.9,2.4-7.3-0.5-9.9   c-2.9-2.6-7.3-2.4-9.9,0.5c-10.7,11.8-16.6,27.1-16.6,43c0,18.5,7.5,35.4,21.2,47.7c1.3,1.2,3,1.8,4.7,1.8c1.9,0,3.8-0.8,5.2-2.3   C88.9,246.2,88.6,241.8,85.8,239.2z"/>
+    <path class="st0" d="M293.1,351.9c9.5,0,18.8-5.4,23-14.9c4.6-10.3,15.5-16.2,26.7-14.6c8.5,1.3,16.5-1.8,21.9-7.5   c4.3-4.5,7-10.6,7-17.4c0-0.2,0-0.4,0-0.7c0-0.2,0-0.4,0-0.6c0-11,7.2-20.8,17.8-24.1c11-3.4,17.8-13.5,17.8-24.1   c0-3.9-0.9-7.8-2.8-11.5c-1.9-3.7-2.8-7.6-2.8-11.5c0-6.8,2.8-13.6,8-18.5c5.4-5,8-11.7,8-18.5c0-7.6-3.4-15.1-10-20.1   c-6.4-4.9-10-12.4-10-20.1c0-3.1,0.6-6.2,1.7-9.2c1.2-3,1.7-6.1,1.7-9.2c0-11.6-8.1-22.3-20.2-24.7c-5.5-1.1-10.3-4-13.9-8   c-3.6-4-5.8-9.2-6.3-14.8c-1-13.5-12.3-23.3-25.1-23.3c-2.1,0-4.2,0.3-6.3,0.8c-2.1,0.5-4.2,0.8-6.2,0.8c-8.8,0-17.2-4.7-21.8-12.6   c-4.7-8.2-13.2-12.6-21.9-12.6c-5.7,0-11.4,1.9-16.2,5.9c-4.7,3.9-10.4,5.9-16.2,5.9c-4.9,0-9.9-1.4-14.2-4.4   c-4.4-3-9.3-4.4-14.1-4.4c-9.5,0-18.8,5.4-23,14.9c-4.1,9.1-13.2,14.9-23,14.9c-1.2,0-2.5-0.1-3.7-0.3   c-15.3-2.3-28.9,9.6-28.9,24.9c0,0.2,0,0.4,0,0.7c0,0.2,0,0.4,0,0.6c0,11-7.2,20.8-17.8,24.1c-11,3.4-17.8,13.5-17.8,24.1   c0,3.9,0.9,7.8,2.8,11.5c1.9,3.6,2.8,7.6,2.8,11.5c0,6.8-2.8,13.6-8,18.5c-5.4,5-8,11.7-8,18.5c0,7.6,3.4,15.1,10,20.1   c6.4,4.9,10,12.4,10,20.1c0,3.1-0.6,6.2-1.7,9.2c-1.2,3-1.7,6.1-1.7,9.2c0,11.6,8.1,22.3,20.2,24.7c5.5,1.1,10.3,4,13.9,8   c3.3,3.7,5.4,8.3,6.1,13.4c0.1,0.5,0.1,0.9,0.1,1.4c1,13.5,12.3,23.3,25.1,23.3c2.1,0,4.2-0.3,6.3-0.8c2.1-0.5,4.2-0.8,6.2-0.8   c8.8,0,17.2,4.7,21.8,12.6c4.7,8.2,13.2,12.6,21.9,12.6c4.1,0,8.2-1,12-3.1c1.4-0.8,2.8-1.7,4.2-2.8c4.4-3.6,9.7-5.6,15.1-5.9   c0.4,0,0.8,0,1.1,0c4.9,0,9.9,1.4,14.2,4.4C283.3,350.5,288.3,351.9,293.1,351.9z M256,306.1c-61.3,0-111-49.7-111-111   c0-61.3,49.7-111,111-111s111,49.7,111,111C367,256.4,317.3,306.1,256,306.1z"/>
+    <path class="st1" d="M314.6,172.5l-29.6-3.6c-3.3-0.4-6.2-2.5-7.6-5.5l-12.6-27.1c-3.5-7.5-14.1-7.5-17.5,0l-12.6,27.1   c-1.4,3-4.3,5.1-7.6,5.5l-29.6,3.6c-8.2,1-11.4,11.1-5.4,16.7l21.9,20.3c2.4,2.3,3.5,5.7,2.9,8.9l-5.7,29.3   c-1.6,8.1,7,14.3,14.2,10.3l26.1-14.5c2.9-1.6,6.5-1.6,9.4,0l26.1,14.5c7.2,4,15.8-2.2,14.2-10.3l-5.7-29.3   c-0.6-3.3,0.5-6.7,2.9-8.9l21.9-20.3C326,183.6,322.7,173.5,314.6,172.5z"/>
+    <path class="st1" d="M198.4,349.4c-2-3.5-5.7-5.6-9.7-5.6c-0.9,0-1.8,0.1-2.8,0.4c-3.1,0.8-6.4,1.2-9.7,1.2   c-14.3,0-27-7.9-33.9-19.6L86.5,449.6l68.9-26.5l25.7,69.2l55.8-123.5c-1.5,0.2-2.9,0.3-4.4,0.3C218.4,369,205.4,361.5,198.4,349.4   z"/>
+    <path class="st1" d="M346.6,336.7c-1.9,0-3.9-0.2-5.8-0.4c-0.6-0.1-1.1-0.1-1.7-0.1c-4.4,0-8.4,2.6-10.2,6.6   c-6.3,14-20.4,23.1-35.8,23.1c-7.9,0-15.5-2.3-22-6.8c-0.1-0.1-0.3-0.2-0.4-0.2l60.2,133.4l25.7-69.2l68.9,26.5l-54.7-121.2   C364,333.7,355.4,336.7,346.6,336.7z"/>
+    </g>
+    </svg>
+
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-top">
+      <div class="header-top-inner">
+        <div class="header-right">
+          <img src="/assets/images/gray.png" alt="لوگو فروشگاه" class="logo">
+
+          <form class="search-form" role="search">
+            <svg class="search-icon"><use href="#search"></svg>
+            <input
+              type="search"placeholder="جستجو ..."class="search-input">
+          </form>
+        </div>
+
+        <div class="header-left">
+          <a href="/templates/login/login.html" class="login-link">
+            <button class="btn-login w-[160px] h-[45px]">
+              <svg class="icon-login"><use href="#login" /></svg>
+              ورود یا ثبت نام
+            </button>
+          </a>
+          <button class="btn-cart" id="cartBtn" aria-label="سبد خرید">
+            <svg class="icon-cart"><use href="#cart" /></svg>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+          <button class="btn-hamburger" id="menuToggle" aria-label="منو">
+            <svg class="icon-hamburger"><use href="#menu" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar" role="navigation">
+      <div class="navbar-inner">
+        <div class="nav-extra">
+          <svg class="icon-menu-extra"><use href="#menu" /></svg>
+          <span>انواع محصولات دیجیتال</span>
+
+          <ul class="dropdown-menu">
+            <li><a href="#">لپ تاپ</a></li>
+            <li><a href="#">تبلت</a></li>
+            <li><a href="#">آیپد</a></li>
+            <li><a href="#">پلی‌استیشن</a></li>
+          </ul>
+        </div>
+
+        <ul class="nav-list" id="navList">
+          <li><a href="#">گوشی اپل</a></li>
+          <li><a href="#">گوشی سامسونگ</a></li>
+          <li><a href="#">گوشی شیائومی</a></li>
+          <li><a href="#">لوازم جانبی</a></li>
+        </ul>
+
+        <div class="mobile-menu" id="mobileMenu">
+          <a href="#">گوشی اپل</a>
+          <a href="#">گوشی سامسونگ</a>
+          <a href="#">گوشی شیائومی</a>
+          <a href="#">لوازم جانبی</a>
+          <a href="#" class="mobile-login">
+            <svg><use href="#login"></svg>
+            ورود یا ثبت نام
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main-content" role="main">
+    <section class="about-section">
+      <div class="about-text">
+        <h2 class="about-title">فروشگاه ما با بیش از هشت سال تجربه کاری در خدمت شماست!</h2>
+        <p class="about-paragraph">
+          در مجموعه ما با خیال راحت دستگاه موبایل مدنظرتون رو با مشاوره و راهنمایی تیم فروش،
+          به صورت نقد و اقساط خرید کنید و علاوه بر این می‌تونید به انواع لوازم جانبی و کالاهای
+          دیجیتال موجود در فروشگاه سر بزنید.
+        </p>
+        <a href="#" class="btn-products w-[170px] h-[47px]">
+          <svg><use href="#bag" /></svg>
+        مشاهده محصولات
+        </a>
+      </div>
+
+    <div class="about-banner"></div>
+  </section>
+</main>
+
+  <!-- Featured Products Section -->
+  <section class="w-full max-w-[1400px] mx-auto px-[18px] py-[10px]">
+    <div class="flex items-center justify-between mb-[30px] pb-3 border-b-2 border-[var(--border)]">
+      <h2 class="font-ray text-2xl font-black text-white relative after:content-[''] after:absolute after:bottom-[-14px] after:right-0 after:w-[50px] after:h-[3px] after:bg-[var(--primary)] after:rounded-[2px]">
+        محصولات ویژه
+      </h2>
+      <a href="#" class="flex items-center gap-1.5 text-[var(--body-text-color2)] text-sm font-medium transition-all duration-300 hover:text-white hover:bg-[var(--box)] hover:translate-x-[-4px] px-3 py-1.5 rounded-md">
+        مشاهده همه
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-300 group-hover:translate-x-[-4px]">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-4 gap-6" id="productsGrid">
+    
+    <!-- iPhone 17 Pro Max -->
+    <div class="product-card bg-[var(--box)] rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)] transition-all duration-300 relative hover:-translate-y-2 hover:shadow-[var(--shadow-hover)] hover:border-[var(--primary)]" 
+         data-product-id="1" 
+         data-product-name="iPhone 17 Pro Max" 
+         data-product-price="400,000,000" 
+         data-product-spec="256GB | ZAA">
+      <div class="relative overflow-hidden aspect-square bg-[#0a0f1f]">
+        <img src="/assets/images/iphone 17 promax  zaa 256 white.webp" alt="iPhone 17 Pro Max" class="product-image w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+        <span class="absolute top-3 right-3 bg-[var(--primary)] text-white text-xs font-bold px-3 py-1 rounded-full z-10">پرفروش</span>
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="product-name text-[0.95rem] font-semibold text-white transition-colors duration-300 leading-5 h-[2.8rem] overflow-hidden line-clamp-2">iPhone 17 Pro Max</h3>
+        <div class="text-[0.75rem] text-[var(--body-text-color3)] font-medium">256GB | ZAA</div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-amber-400 text-sm tracking-[2px]">★★★★★</span>
+          <span class="text-[var(--body-text-color3)] text-xs">(124)</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap mt-1">
+          <span class="text-[1.1rem] font-bold text-white ltr">400,000,000</span>
+          <span class="text-[0.7rem] text-[var(--body-text-color3)]">تومان</span>
+        </div>
+        <div class="mt-2.5">
+          <button class="btn-add-to-cart w-full py-2.5 px-4 bg-[var(--btn-bg-color)] border border-[var(--border)] rounded-[var(--radius-md)] text-white text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:bg-[#6a3bc8] hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5 hover:scale-102 active:scale-97">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--body-text-color2)] transition-transform duration-300 group-hover:-translate-x-1">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            افزودن به سبد
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Samsung S25 Ultra -->
+    <div class="product-card bg-[var(--box)] rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)] transition-all duration-300 relative hover:-translate-y-2 hover:shadow-[var(--shadow-hover)] hover:border-[var(--primary)]" 
+         data-product-id="2" 
+         data-product-name="Samsung S25 Ultra" 
+         data-product-price="300,000,000" 
+         data-product-spec="512GB | Vietnam">
+      <div class="relative overflow-hidden aspect-square bg-[#0a0f1f]">
+        <img src="/assets/images/s25 ultra 256 vet.webp" alt="Samsung S25 Ultra" class="product-image w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+        <span class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">تخفیف ویژه</span>
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="product-name text-[0.95rem] font-semibold text-white transition-colors duration-300 leading-5 h-[2.8rem] overflow-hidden line-clamp-2">Samsung S25 Ultra</h3>
+        <div class="text-[0.75rem] text-[var(--body-text-color3)] font-medium">512GB |12GB RAM Vietnam</div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-amber-400 text-sm tracking-[2px]">★★★★☆</span>
+          <span class="text-[var(--body-text-color3)] text-xs">(98)</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap mt-1">
+          <span class="text-[1.1rem] font-bold text-red-600 ltr">300,000,000</span>
+          <span class="text-[0.8rem] text-[var(--body-text-color3)] line-through ltr">320,000,000</span>
+        </div>
+        <div class="mt-2.5">
+          <button class="btn-add-to-cart w-full py-2.5 px-4 bg-[var(--btn-bg-color)] border border-[var(--border)] rounded-[var(--radius-md)] text-white text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:bg-[#6a3bc8] hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5 hover:scale-102 active:scale-97">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--body-text-color2)] transition-transform duration-300 group-hover:-translate-x-1">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            افزودن به سبد
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Redmi Note 14 Pro 4G -->
+    <div class="product-card bg-[var(--box)] rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)] transition-all duration-300 relative hover:-translate-y-2 hover:shadow-[var(--shadow-hover)] hover:border-[var(--primary)]" 
+         data-product-id="3" 
+         data-product-name="Redmi Note 14 Pro 4G" 
+         data-product-price="85,000,000" 
+         data-product-spec="256GB | 8GB RAM | Global">
+      <div class="relative overflow-hidden aspect-square bg-[#0a0f1f]">
+        <img src="/assets/images/Redmi Note 14 Pro 4G.webp" alt="Redmi Note 14 Pro 4G" class="product-image w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="product-name text-[0.95rem] font-semibold text-white transition-colors duration-300 leading-5 h-[2.8rem] overflow-hidden line-clamp-2">Redmi Note 14 Pro 4G</h3>
+        <div class="text-[0.75rem] text-[var(--body-text-color3)] font-medium">256GB | 8GB RAM | Global</div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-amber-400 text-sm tracking-[2px]">★★★★★</span>
+          <span class="text-[var(--body-text-color3)] text-xs">(76)</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap mt-1">
+          <span class="text-[1.1rem] font-bold text-white ltr">85,000,000</span>
+          <span class="text-[0.7rem] text-[var(--body-text-color3)]">تومان</span>
+        </div>
+        <div class="mt-2.5">
+          <button class="btn-add-to-cart w-full py-2.5 px-4 bg-[var(--btn-bg-color)] border border-[var(--border)] rounded-[var(--radius-md)] text-white text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:bg-[#6a3bc8] hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5 hover:scale-102 active:scale-97">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--body-text-color2)] transition-transform duration-300 group-hover:-translate-x-1">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            افزودن به سبد
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AirPods Pro 2 -->
+    <div class="product-card bg-[var(--box)] rounded-[var(--radius-lg)] overflow-hidden border border-[var(--border)] transition-all duration-300 relative hover:-translate-y-2 hover:shadow-[var(--shadow-hover)] hover:border-[var(--primary)]" 
+         data-product-id="4" 
+         data-product-name="AirPods Pro 2" 
+         data-product-price="26,000,000" 
+         data-product-spec="USB-C | A3047">
+      <div class="relative overflow-hidden aspect-square bg-[#0a0f1f]">
+        <img src="/assets/images/airpods pro 2.webp" alt="AirPods Pro 2" class="product-image w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy">
+        <span class="absolute top-3 right-3 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full z-10">جدید</span>
+      </div>
+      <div class="p-4 flex flex-col gap-2">
+        <h3 class="product-name text-[0.95rem] font-semibold text-white transition-colors duration-300 leading-5 h-[2.8rem] overflow-hidden line-clamp-2">AirPods Pro 2</h3>
+        <div class="text-[0.75rem] text-[var(--body-text-color3)] font-medium">USB-C | A3047</div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-amber-400 text-sm tracking-[2px]">★★★★☆</span>
+          <span class="text-[var(--body-text-color3)] text-xs">(53)</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap mt-1">
+          <span class="text-[1.1rem] font-bold text-white ltr">26,000,000</span>
+          <span class="text-[0.7rem] text-[var(--body-text-color3)]">تومان</span>
+        </div>
+        <div class="mt-2.5">
+          <button class="btn-add-to-cart w-full py-2.5 px-4 bg-[var(--btn-bg-color)] border border-[var(--border)] rounded-[var(--radius-md)] text-white text-sm font-semibold flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:bg-[#6a3bc8] hover:shadow-[var(--shadow-hover)] hover:-translate-y-0.5 hover:scale-102 active:scale-97">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[var(--body-text-color2)] transition-transform duration-300 group-hover:-translate-x-1">
+              <circle cx="9" cy="21" r="1"/>
+              <circle cx="20" cy="21" r="1"/>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            افزودن به سبد
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Store Services and Benefits Section -->
+  <section class="trust-boxes flex main-box w-full h-48 gap-28 justify-center text-center text-xl mt-6">
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8 ">
+        <svg><use href="#Warranty"/></svg>
+        ضمانت اصالت کالا</div>
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8">
+      <svg><use href="#Installments"/></svg>
+        پرداخت اقساطی</div>
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8">
+        <svg><use href="#Support"/></svg>
+        پشتیبانی 24 ساعته</div>
+      <div class="trust-box size-44 bg-[#0d3b4a] rounded-[8px] pt-8">
+        <svg><use href="#send"/></svg>
+        ارسال رایگان</div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer-container w-full mt-[60px] bg-gradient-to-b from-[#050d2e] to-[#030825] border-t border-[var(--border)] pt-10 px-[18px]">
+  <!-- Footer top section -->
+  <div class="footer-inner max-w-[1400px] mx-auto grid grid-cols-[2fr_1fr_1fr_1.5fr] gap-10 pb-[30px] border-b border-[var(--border)]">
+
+    <div class="footer-column flex flex-col gap-4">
+      <img src="../../assets/images/gray.png" alt="Phone Center" class="footer-logo h-[50px] w-auto self-start">
+      <p class="footer-description text-[var(--body-text-color3)] text-[0.85rem] leading-[1.8] text-justify mt-1">
+        فروشگاه تخصصی انواع موبایل و لوازم جانبی با بیش از ۸ سال تجربه درخشان در زمینه فروش محصولات اپل، سامسونگ، شیائومی و دیگر برندهای معتبر.
+      </p>
+      <div class="footer-social flex gap-2.5 flex-wrap mt-1.5">
+        <a href="#" class="social-link w-10 h-10 rounded-full bg-[var(--box)] border border-[var(--border)] flex items-center justify-center transition-all duration-300 text-[var(--body-text-color2)] hover:bg-[var(--primary)] hover:text-white hover:-translate-y-1 hover:scale-105 hover:shadow-[var(--shadow-hover)]" aria-label="اینستاگرام">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17" cy="7" r="1.5"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link w-10 h-10 rounded-full bg-[var(--box)] border border-[var(--border)] flex items-center justify-center transition-all duration-300 text-[var(--body-text-color2)] hover:bg-[var(--primary)] hover:text-white hover:-translate-y-1 hover:scale-105 hover:shadow-[var(--shadow-hover)]" aria-label="تلگرام">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21.5 4.5L2.5 10.5L8.5 14.5L13 21L21.5 4.5Z"/>
+            <path d="M8.5 14.5L12 20L16 10"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link w-10 h-10 rounded-full bg-[var(--box)] border border-[var(--border)] flex items-center justify-center transition-all duration-300 text-[var(--body-text-color2)] hover:bg-[var(--primary)] hover:text-white hover:-translate-y-1 hover:scale-105 hover:shadow-[var(--shadow-hover)]" aria-label="یوتیوب">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22.54 6.42C22.42 5.95 22.18 5.52 21.85 5.19C21.52 4.86 21.09 4.62 20.62 4.5C18.84 4 12 4 12 4C12 4 5.16 4 3.38 4.5C2.91 4.62 2.48 4.86 2.15 5.19C1.82 5.52 1.58 5.95 1.46 6.42C1 8.2 1 12 1 12C1 12 1 15.8 1.46 17.58C1.58 18.05 1.82 18.48 2.15 18.81C2.48 19.14 2.91 19.38 3.38 19.5C5.16 20 12 20 12 20C12 20 18.84 20 20.62 19.5C21.09 19.38 21.52 19.14 21.85 18.81C22.18 18.48 22.42 18.05 22.54 17.58C23 15.8 23 12 23 12C23 12 23 8.2 22.54 6.42Z"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link w-10 h-10 rounded-full bg-[var(--box)] border border-[var(--border)] flex items-center justify-center transition-all duration-300 text-[var(--body-text-color2)] hover:bg-[var(--primary)] hover:text-white hover:-translate-y-1 hover:scale-105 hover:shadow-[var(--shadow-hover)]" aria-label="واتساپ">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 11.5C21 16.194 17.194 20 12.5 20C10.8 20 9.2 19.5 7.8 18.6L3 20L4.4 15.2C3.5 13.8 3 12.2 3 10.5C3 5.806 6.806 2 11.5 2C16.194 2 21 5.806 21 11.5Z"/>
+            <path d="M8 8L8.5 8.5M11 8L11.5 8.5M14 8L14.5 8.5"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link w-10 h-10 rounded-full bg-[var(--box)] border border-[var(--border)] flex items-center justify-center transition-all duration-300 text-[var(--body-text-color2)] hover:bg-[var(--primary)] hover:text-white hover:-translate-y-1 hover:scale-105 hover:shadow-[var(--shadow-hover)]" aria-label="توییتر">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4L11.731 11.731M20 20L11.731 11.731M11.731 11.731L20 4L4 20"/>
+          </svg>
+        </a>
+        <a href="#" class="social-link w-10 h-10 rounded-full bg-[var(--box)] border border-[var(--border)] flex items-center justify-center transition-all duration-300 text-[var(--body-text-color2)] hover:bg-[var(--primary)] hover:text-white hover:-translate-y-1 hover:scale-105 hover:shadow-[var(--shadow-hover)]" aria-label="لینکدین">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 8C17.591 8 19.117 8.632 20.243 9.757C21.368 10.883 22 12.409 22 14V21H18V14C18 13.4696 17.789 12.9609 17.414 12.586C17.039 12.211 16.53 12 16 12C15.47 12 14.961 12.211 14.586 12.586C14.211 12.9609 14 13.4696 14 14V21H10V14C10 12.409 10.632 10.883 11.757 9.757C12.883 8.632 14.409 8 16 8Z"/>
+            <rect x="4" y="9" width="4" height="12"/>
+            <circle cx="6" cy="6" r="2"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-column flex flex-col gap-4">
+      <h4 class="footer-title font-ray text-[1.05rem] font-black text-white relative pb-2.5 after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-[35px] after:h-[2px] after:bg-[var(--primary)] after:rounded-[2px] after:transition-all after:duration-300 hover:after:w-[55px]">
+        دسترسی سریع
+      </h4>
+      <ul class="footer-list flex flex-col gap-2.5 list-none p-0">
+        <li><a href="#" class="text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 inline-flex items-center gap-1.5 hover:text-white hover:-translate-x-1 group">گوشی اپل</a></li>
+        <li><a href="#" class="text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 inline-flex items-center gap-1.5 hover:text-white hover:-translate-x-1 group">گوشی سامسونگ</a></li>
+        <li><a href="#" class="text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 inline-flex items-center gap-1.5 hover:text-white hover:-translate-x-1 group">گوشی شیائومی</a></li>
+        <li><a href="#" class="text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 inline-flex items-center gap-1.5 hover:text-white hover:-translate-x-1 group">لوازم جانبی</a></li>
+        <li><a href="#" class="text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 inline-flex items-center gap-1.5 hover:text-white hover:-translate-x-1 group">محصولات ویژه</a></li>
+      </ul>
+    </div>  
+
+    <div class="footer-column flex flex-col gap-4">
+      <h4 class="footer-title font-ray text-[1.05rem] font-black text-white relative pb-2.5 after:content-[''] after:absolute after:bottom-0 after:right-0 after:w-[35px] after:h-[2px] after:bg-[var(--primary)] after:rounded-[2px] after:transition-all after:duration-300 hover:after:w-[55px]">
+        تماس با ما
+      </h4>
+      <div class="contact-item flex items-start gap-2.5 text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 py-1 hover:text-white">
+        <svg class="w-[18px] h-[18px] flex-shrink-0 text-[var(--primary)] mt-0.5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92V19a2 2 0 0 1-2 18H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2.08"/>
+          <polyline points="22 7 12 13 2 7"/>
+        </svg>
+        <span>rezakvp143@gmail.com</span>
+      </div>
+      <div class="contact-item flex items-start gap-2.5 text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 py-1 hover:text-white">
+        <svg class="w-[18px] h-[18px] flex-shrink-0 text-[var(--primary)] mt-0.5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92V19a2 2 0 0 1-2 18H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2.08"/>
+          <polyline points="22 7 12 13 2 7"/>
+        </svg>
+        <span>09385661504</span>
+      </div>
+      <div class="contact-item flex items-start gap-2.5 text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 py-1 hover:text-white">
+        <svg class="w-[18px] h-[18px] flex-shrink-0 text-[var(--primary)] mt-0.5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>تهران، خیابان ولیعصر، پلاک ...</span>
+      </div>
+      <div class="contact-item flex items-start gap-2.5 text-[var(--body-text-color3)] text-[0.85rem] transition-all duration-300 py-1 hover:text-white">
+        <svg class="w-[18px] h-[18px] flex-shrink-0 text-[var(--primary)] mt-0.5 transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>شنبه تا پنجشنبه ۹ الی ۲۱</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom max-w-[1400px] mx-auto py-4">
+    <div class="footer-bottom-inner flex items-center justify-between flex-wrap gap-3">
+      <p class="footer-copy text-[var(--body-text-color3)] text-[0.8rem]">
+        © ۱۴۰۴ تمامی حقوق مادی و معنوی این وب‌سایت متعلق به <strong class="text-[var(--primary)] font-bold">فروشگاه Phone Center</strong> می‌باشد.
+      </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Shopping Cart Modal -->
+<div id="cartModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center p-4 transition-all duration-300" style="display:none;">
+  <div class="bg-[var(--box)] rounded-[var(--radius-lg)] w-full max-w-2xl max-h-[80vh] overflow-hidden border border-[var(--border)] shadow-2xl">
+
+    <div class="flex items-center justify-between p-4 border-b border-[var(--border)]">
+      <h3 class="text-xl font-bold text-white font-ray flex items-center gap-2">
+        <svg class="w-6 h-6 text-[var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/>
+          <circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        سبد خرید
+      </h3>
+      <button id="closeCartModal" class="text-[var(--body-text-color3)] hover:text-white text-2xl transition-colors duration-300 p-2 hover:bg-[var(--border)] rounded-lg">
+        ✕
+      </button>
+    </div>
+
+    <div class="p-4 overflow-y-auto max-h-[55vh]" id="cartItemsContainer">
+      <div class="text-center py-12 px-4" id="emptyCartMessage">
+        <div class="relative inline-block mb-6">
+          <svg class="w-24 h-24 mx-auto text-[var(--body-text-color3)]/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8">
+            <circle cx="9" cy="21" r="1.5" stroke="currentColor"/>
+            <circle cx="20" cy="21" r="1.5" stroke="currentColor"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" stroke="currentColor"/>
+            <path d="M8 3L10 8M16 3L14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <div class="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[var(--primary)]/10 animate-pulse"></div>
+          <div class="absolute -bottom-2 -left-2 w-6 h-6 rounded-full bg-[var(--primary)]/5 animate-pulse" style="animation-delay: 0.5s;"></div>
+        </div>
+        
+        <h4 class="text-xl font-bold text-white mb-2 font-ray">سبد خرید شما خالی است!</h4>
+        <p class="text-[var(--body-text-color3)] text-sm max-w-sm mx-auto leading-relaxed">
+          به نظر می‌رسد هنوز محصولی به سبد خرید خود اضافه نکرده‌اید.
+          <br>
+          از بخش <span class="text-[var(--primary)] font-semibold">محصولات ویژه</span> دیدن کنید.
+        </p>
+        
+        <a href="#productsGrid" class="inline-block mt-6 px-6 py-2.5 bg-[var(--btn-bg-color)] hover:bg-[#6a3bc8] text-white rounded-[var(--radius-md)] font-medium transition-all duration-300 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1 active:scale-95 text-sm">
+          مشاهده محصولات
+        </a>
+      </div>
+
+      <div id="cartItemsList" class="hidden space-y-3"></div>
+    </div>
+
+    <div class="p-4 border-t border-[var(--border)] flex items-center justify-between">
+      <div>
+        <span class="text-[var(--body-text-color3)] text-sm">جمع کل:</span>
+        <span class="text-white text-xl font-bold mr-2 font-ray" id="cartTotal">۰</span>
+        <span class="text-[var(--body-text-color3)] text-sm">تومان</span>
+      </div>
+      <div class="flex gap-3">
+        <button id="clearCartBtn" class="text-[var(--body-text-color3)] hover:text-red-500 text-sm transition-colors duration-300 px-4 py-2 rounded-lg hover:bg-red-500/10">
+          خالی کردن
+        </button>
+        <button id="checkoutBtn" class="bg-[var(--btn-bg-color)] hover:bg-[#6a3bc8] text-white px-6 py-2.5 rounded-[var(--radius-md)] font-bold transition-all duration-300 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1 active:scale-95 text-sm">
+          ثبت سفارش
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script src="/static/js/main.js"></script>
+  <script src="/static/js/utils.js"></script>
+
+</body>
+</html>
