@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let cart = [];
   let currentFilter = 'all';
+  let products = [];
 
   function formatPrice(price) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -226,7 +227,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  renderProducts('all');
-  updateCartBadge();
+  // load products from backend
+  fetch('/api/products')
+    .then(res => res.json())
+    .then(data => {
+      products = data;
+      renderProducts('all');
+      updateCartBadge();
+    })
+    .catch(err => {
+      console.error('failed to load products', err);
+      renderProducts('all');
+      updateCartBadge();
+    });
   console.log('✅ صفحه محصولات راه‌اندازی شد!');
 });

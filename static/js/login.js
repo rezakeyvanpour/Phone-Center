@@ -64,11 +64,32 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       if (!isValid) {
-
         this.style.animation = 'shake 0.5s ease';
-        setTimeout(() => {
-          this.style.animation = '';
-        }, 500);
+        setTimeout(() => { this.style.animation = ''; }, 500);
+        return;
+      }
+      // If this is the login form, send credentials to backend and store JWT
+      if (type === 'ورود') {
+        const email = this.querySelector('input[name="email"]').value.trim();
+        const password = this.querySelector('input[name="pswd"]').value.trim();
+        fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        })
+        .then(res => res.json().then(body => ({ status: res.status, body })))
+        .then(({ status, body }) => {
+          if (status === 200 && body.token) {
+            localStorage.setItem('authToken', body.token);
+            showSuccessMessage('ورود');
+          } else {
+            alert(body.error || 'نام کاربری یا رمز اشتباه است');
+          }
+        })
+        .catch(err => {
+          console.error(err);
+          alert('خطا در ارتباط با سرور');
+        });
         return;
       }
       showSuccessMessage(type);
