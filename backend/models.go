@@ -1,6 +1,8 @@
 package main
 
 import (
+	"time"
+
 	"gorm.io/gorm"
 )
 
@@ -20,8 +22,10 @@ type Product struct {
 }
 
 type User struct {
-	ID           uint   `gorm:"primaryKey;autoIncrement" json:"id"`
-	Username     string `gorm:"type:varchar(100);uniqueIndex;not null" json:"username"`
-	Email        string `gorm:"type:varchar(255);uniqueIndex;not null" json:"email"`
-	PasswordHash string `gorm:"type:varchar(255);not null" json:"-"`
+	ID           uint      `gorm:"primaryKey;autoIncrement" json:"id"`
+	Username     string    `gorm:"type:varchar(100);uniqueIndex;not null" json:"username"`
+	Email        string    `gorm:"type:varchar(255);uniqueIndex;not null" json:"email"`
+	PasswordHash string    `gorm:"type:varchar(255);not null" json:"-"`
+	CreatedAt    time.Time `json:"createdAt"`
+	UpdatedAt    time.Time `json:"updatedAt"`
 }

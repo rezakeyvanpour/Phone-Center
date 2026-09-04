@@ -68,22 +68,33 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => { this.style.animation = ''; }, 500);
         return;
       }
-      // If this is the login form, send credentials to backend and store JWT
-      if (type === 'ورود') {
-        const email = this.querySelector('input[name="email"]').value.trim();
-        const password = this.querySelector('input[name="pswd"]').value.trim();
-        fetch('/login', {
+      const email = this.querySelector('input[name="email"]').value.trim();
+      const password = this.querySelector('input[name="pswd"]').value;
+      const endpoint = type === 'ورود' ? '/login' : '/register';
+      const payload = type === 'ورود'
+        ? { email, password }
+        : {
+            username: this.querySelector('input[name="txt"]').value.trim(),
+            email,
+            password
+          };
+
+      fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify(payload)
         })
         .then(res => res.json().then(body => ({ status: res.status, body })))
         .then(({ status, body }) => {
-          if (status === 200 && body.token) {
+          if ((status === 200 || status === 201) && body.token) {
             localStorage.setItem('authToken', body.token);
-            showSuccessMessage('ورود');
+            if (body.user) {
+              localStorage.setItem('authUser', JSON.stringify(body.user));
+            }
+            showSuccessMessage(type);
+            setTimeout(() => { window.location.href = '/'; }, 700);
           } else {
-            alert(body.error || 'نام کاربری یا رمز اشتباه است');
+            alert(body.error || (type === 'ورود' ? 'نام کاربری یا رمز اشتباه است' : 'ثبت نام انجام نشد'));
           }
         })
         .catch(err => {
@@ -91,8 +102,6 @@ document.addEventListener('DOMContentLoaded', function() {
           alert('خطا در ارتباط با سرور');
         });
         return;
-      }
-      showSuccessMessage(type);
     });
   }
 

@@ -98,11 +98,13 @@ func main() {
 	// Protected
 	protected := api.Group("")
 	protected.Use(JWTAuthMiddleware())
+	protected.GET("/me", CurrentUserHandler(db))
 	protected.POST("/products", CreateProductHandler(db))
 	protected.PUT("/products/:id", UpdateProductHandler(db))
 	protected.DELETE("/products/:id", DeleteProductHandler(db))
 
 	r.POST("/login", LoginHandler(db))
+	r.POST("/register", RegisterHandler(db))
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -120,7 +122,7 @@ func mysqlDSN() string {
 	}
 
 	user := getenvDefault("MYSQL_USER", "root")
-	password := getenvDefault("MYSQL_PASSWORD","138313551360mA@")
+	password := getenvDefault("MYSQL_PASSWORD", "138313551360mA@")
 	host := getenvDefault("MYSQL_HOST", "127.0.0.1")
 	port := getenvDefault("MYSQL_PORT", "3306")
 	database := getenvDefault("MYSQL_DATABASE", "phone")

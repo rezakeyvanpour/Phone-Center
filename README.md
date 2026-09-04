@@ -33,6 +33,8 @@ it before exposing the server publicly.
 - `GET /api/products` — products from MySQL
 - `GET /api/products/:id` — one product from MySQL
 - `POST /login` — obtain a JWT
+- `POST /register` — create a user account and obtain a JWT
+- `GET /api/me` — get the authenticated user profile
 - `POST|PUT|DELETE /api/products[/:id]` — authenticated product management
 
 `GET /api/products` also accepts `category`, `q`, `limit`, and `offset` query

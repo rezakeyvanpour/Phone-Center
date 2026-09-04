@@ -2,7 +2,9 @@ package main
 
 import (
 	"crypto/rand"
+	"errors"
 	"net/http"
+	"net/mail"
 	"os"
 	"strconv"
 	"strings"
@@ -43,7 +45,12 @@ func LoginHandler(db *gorm.DB) gin.HandlerFunc {
 			return
 		}
 		var user User
-		if err := db.Where("email = ?", payload.Email).First(&user).Error; err != nil {
+		email := normalizeEmail(payload.Email)
+		if email == "" || payload.Password == "" {
+			respondError(c, http.StatusUnauthorized, "invalid credentials")
+			return
+		}
+		if err := db.Where("email = ?", email).First(&user).Error; err != nil {
 			respondError(c, http.StatusUnauthorized, "invalid credentials")
 			return
 		}
@@ -51,17 +58,93 @@ func LoginHandler(db *gorm.DB) gin.HandlerFunc {
 			respondError(c, http.StatusUnauthorized, "invalid credentials")
 			return
 		}
-		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
-			"sub": user.ID,
-			"exp": time.Now().Add(24 * time.Hour).Unix(),
-			"iat": time.Now().Unix(),
-		})
-		tok, err := token.SignedString(jwtSecret)
+		tok, err := createUserToken(user)
 		if err != nil {
 			respondError(c, http.StatusInternalServerError, "could not create token")
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{"token": tok})
+		c.JSON(http.StatusOK, gin.H{"token": tok, "user": publicUser(user)})
+	}
+}
+
+func RegisterHandler(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		var payload struct {
+			Username string `json:"username"`
+			Email    string `json:"email"`
+			Password string `json:"password"`
+		}
+		if err := c.ShouldBindJSON(&payload); err != nil {
+			respondError(c, http.StatusBadRequest, "invalid payload")
+			return
+		}
+
+		payload.Username = strings.TrimSpace(payload.Username)
+		payload.Email = normalizeEmail(payload.Email)
+		if err := validateRegistration(payload.Username, payload.Email, payload.Password); err != nil {
+			respondError(c, http.StatusBadRequest, err.Error())
+			return
+		}
+
+		var existing User
+		if err := db.Where("email = ? OR username = ?", payload.Email, payload.Username).First(&existing).Error; err == nil {
+			if strings.EqualFold(existing.Email, payload.Email) {
+				respondError(c, http.StatusConflict, "email is already registered")
+			} else {
+				respondError(c, http.StatusConflict, "username is already taken")
+			}
+			return
+		} else if !errors.Is(err, gorm.ErrRecordNotFound) {
+			respondError(c, http.StatusInternalServerError, "could not check account")
+			return
+		}
+
+		passwordHash, err := bcrypt.GenerateFromPassword([]byte(payload.Password), bcrypt.DefaultCost)
+		if err != nil {
+			respondError(c, http.StatusInternalServerError, "could not secure password")
+			return
+		}
+		user := User{
+			Username:     payload.Username,
+			Email:        payload.Email,
+			PasswordHash: string(passwordHash),
+		}
+		if err := db.Create(&user).Error; err != nil {
+			// Unique indexes protect against concurrent duplicate signups.
+			if strings.Contains(strings.ToLower(err.Error()), "duplicate") {
+				respondError(c, http.StatusConflict, "email or username is already registered")
+				return
+			}
+			respondError(c, http.StatusInternalServerError, "could not create account")
+			return
+		}
+
+		token, err := createUserToken(user)
+		if err != nil {
+			respondError(c, http.StatusInternalServerError, "account created but could not create token")
+			return
+		}
+		c.JSON(http.StatusCreated, gin.H{"token": token, "user": publicUser(user)})
+	}
+}
+
+func CurrentUserHandler(db *gorm.DB) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		userID, ok := c.Get("userID")
+		if !ok {
+			respondError(c, http.StatusUnauthorized, "invalid token claims")
+			return
+		}
+		var user User
+		if err := db.First(&user, userID).Error; err != nil {
+			if errors.Is(err, gorm.ErrRecordNotFound) {
+				respondError(c, http.StatusUnauthorized, "user not found")
+				return
+			}
+			respondError(c, http.StatusInternalServerError, "could not fetch user")
+			return
+		}
+		c.JSON(http.StatusOK, gin.H{"user": publicUser(user)})
 	}
 }
 
@@ -91,9 +174,79 @@ func JWTAuthMiddleware() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		c.Set("user", claims["sub"])
+		userID, ok := tokenUserID(claims["sub"])
+		if !ok {
+			respondError(c, http.StatusUnauthorized, "invalid token subject")
+			c.Abort()
+			return
+		}
+		c.Set("user", userID)
+		c.Set("userID", userID)
 		c.Next()
 	}
+}
+
+func tokenUserID(value interface{}) (uint, bool) {
+	switch v := value.(type) {
+	case float64:
+		if v > 0 && v == float64(uint(v)) {
+			return uint(v), true
+		}
+	case string:
+		id, err := strconv.ParseUint(v, 10, 64)
+		if err == nil && id > 0 {
+			return uint(id), true
+		}
+	case uint:
+		if v > 0 {
+			return v, true
+		}
+	case uint64:
+		if v > 0 {
+			return uint(v), true
+		}
+	}
+	return 0, false
+}
+
+func createUserToken(user User) (string, error) {
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+		"sub":      user.ID,
+		"username": user.Username,
+		"email":    user.Email,
+		"exp":      time.Now().Add(24 * time.Hour).Unix(),
+		"iat":      time.Now().Unix(),
+	})
+	return token.SignedString(jwtSecret)
+}
+
+func publicUser(user User) gin.H {
+	return gin.H{
+		"id":        user.ID,
+		"username":  user.Username,
+		"email":     user.Email,
+		"createdAt": user.CreatedAt,
+	}
+}
+
+func normalizeEmail(email string) string {
+	return strings.ToLower(strings.TrimSpace(email))
+}
+
+func validateRegistration(username, email, password string) error {
+	if len(username) < 3 || len(username) > 100 {
+		return errors.New("username must be between 3 and 100 characters")
+	}
+	if _, err := mail.ParseAddress(email); err != nil {
+		return errors.New("invalid email address")
+	}
+	if len(password) < 8 {
+		return errors.New("password must be at least 8 characters")
+	}
+	if len(password) > 72 {
+		return errors.New("password must be at most 72 characters")
+	}
+	return nil
 }
 
 // Products handlers
