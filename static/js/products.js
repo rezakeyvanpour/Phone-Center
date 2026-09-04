@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const badgeHtml = p.badge ? `<span class="absolute top-3 right-3 bg-[var(--primary)] text-white text-xs font-bold px-3 py-1 rounded-full z-10">${p.badge}</span>` : '';
     
 
-      const detailLink = `/templates/products/product-detail.html?id=${p.id}`;
+      const detailLink = `/product-detail?id=${p.id}`;
       html += `
         <div class="product-card" data-id="${p.id}" data-category="${p.category}">
           <div class="relative overflow-hidden aspect-square bg-[#0a0f1f] cursor-pointer" onclick="location.href='${detailLink}'">
@@ -232,7 +232,11 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(res => res.json())
     .then(data => {
       products = data;
-      renderProducts('all');
+      const requestedFilter = new URLSearchParams(window.location.search).get('filter');
+      const availableFilter = requestedFilter && (requestedFilter === 'all' || products.some(p => p.category === requestedFilter))
+        ? requestedFilter
+        : 'all';
+      setFilter(availableFilter);
       updateCartBadge();
     })
     .catch(err => {

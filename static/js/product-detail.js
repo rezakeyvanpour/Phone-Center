@@ -139,13 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return;
   }
 
-  const product = products.find(p => p.id === productId);
-  if (!product) {
-    container.innerHTML = `<div class="text-center text-[var(--body-text-color3)] py-12">محصول مورد نظر وجود ندارد.</div>`;
-    return;
-  }
-
-  function renderDetail() {
+  function renderDetail(product) {
   
     const regionDisplay = product.region ? `- ${product.region}` : '';
     
@@ -195,8 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  renderDetail();
-
   document.querySelectorAll('.search-form').forEach(form => {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -204,6 +196,21 @@ document.addEventListener('DOMContentLoaded', function() {
       if (input && input.value.trim()) alert('جستجو برای: "' + input.value.trim() + '"');
     });
   });
+
+  // Product details are loaded from the Go/MySQL API so this page uses the
+  // same source of truth as the product listing.
+  fetch(`/api/products/${productId}`)
+    .then(async response => {
+      if (!response.ok) {
+        throw new Error((await response.json().catch(() => ({}))).error || 'product not found');
+      }
+      return response.json();
+    })
+    .then(product => renderDetail(product))
+    .catch(error => {
+      console.error('failed to load product', error);
+      container.innerHTML = `<div class="text-center text-[var(--body-text-color3)] py-12">محصول مورد نظر وجود ندارد.</div>`;
+    });
 
   console.log('✅ صفحه جزئیات محصول بارگذاری شد!');
 });
