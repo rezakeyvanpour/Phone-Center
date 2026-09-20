@@ -122,7 +122,7 @@ func mysqlDSN() string {
 	}
 
 	user := getenvDefault("MYSQL_USER", "root")
-	password := getenvDefault("MYSQL_PASSWORD", "138313551360mA@")
+	password := getenvDefault("MYSQL_PASSWORD", "Rezarrrr84")
 	host := getenvDefault("MYSQL_HOST", "127.0.0.1")
 	port := getenvDefault("MYSQL_PORT", "3306")
 	database := getenvDefault("MYSQL_DATABASE", "phone")

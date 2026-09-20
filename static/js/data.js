@@ -504,7 +504,7 @@ const products = [
     name: 'iPad 10th Gen', 
     price: 220000000, 
     spec: '64GB | WiFi | ZAA', 
-    image: '/assets/images/ipad10th.webp', 
+    image: '/assets/images/iPad 10th Gen.jpg', 
     category: 'tablet', 
     badge: '',
     colors: ['سفید', 'آبی', 'صورتی'],
@@ -517,7 +517,7 @@ const products = [
     name: 'Samsung Tab S9 Ultra', 
     price: 420000000, 
     spec: '256GB | 12GB RAM | Vietnam', 
-    image: '/assets/images/tabs9ultra.webp', 
+    image: '/assets/images/Samsung Tab S9 Ultra.webp', 
     category: 'tablet', 
     badge: '',
     colors: ['مشکی', 'سفید'],
@@ -700,7 +700,7 @@ const products = [
   },
   { 
     id: 56, 
-    name: 'Apple Watch Ultra 2', 
+    name: 'Apple Watch Ultra 3', 
     price: 150000000, 
     spec: '49mm | ZAA', 
     image: '/assets/images/watchultra2.webp', 
@@ -857,4 +857,5 @@ const products = [
     region: 'EU'
   }
 ];
+
 
