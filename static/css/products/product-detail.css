@@ -93,19 +93,96 @@
   background-color: #22c55e;
 }
 
+/* ==========================================================
+   Product Detail Responsive
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  .detail-container {
+    padding: 24px 14px;
+  }
+
+  .detail-wrapper {
+    max-width: 100%;
+    padding: 24px;
+    gap: 28px;
+  }
+
+  .detail-image {
+    flex: 1 1 320px;
+    min-width: 240px;
+  }
+
+  .detail-info {
+    flex: 1 1 360px;
+  }
+}
 
 @media (max-width: 768px) {
+  .detail-container {
+    padding: 14px 12px;
+  }
+
   .detail-wrapper {
     flex-direction: column;
+    width: 100%;
     padding: 20px;
     gap: 20px;
   }
+
   .detail-image {
-    flex: none;
     width: 100%;
+    max-width: 560px;
+    min-width: 0;
+    margin-inline: auto;
   }
+
+  .detail-image img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .detail-info {
+    width: 100%;
+    min-width: 0;
+    gap: 14px;
+  }
+
   .detail-info h1 {
+    font-size: 1.35rem;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+
+  .detail-info .spec {
+    font-size: 0.82rem;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+
+  .detail-info .region {
+    font-size: 0.78rem;
+    line-height: 1.8;
+  }
+
+  .detail-info .price {
     font-size: 1.3rem;
+    line-height: 1.5;
+  }
+
+  .detail-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-add-cart-detail {
+    width: 100%;
+    min-height: 46px;
+    justify-content: center;
+    padding: 10px 18px;
   }
 }
 
@@ -113,10 +190,51 @@
   .detail-container {
     padding: 10px;
   }
+
   .detail-wrapper {
-    padding: 15px;
+    padding: 14px;
+    gap: 16px;
+    border-radius: 12px;
   }
+
+  .detail-info {
+    gap: 12px;
+  }
+
+  .detail-info h1 {
+    font-size: 1.15rem;
+    line-height: 1.75;
+  }
+
+  .detail-info .spec {
+    font-size: 0.76rem;
+  }
+
+  .detail-info .region {
+    font-size: 0.74rem;
+  }
+
   .detail-info .price {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+  }
+
+  .btn-add-cart-detail {
+    min-height: 44px;
+    font-size: 0.82rem;
+    padding-inline: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .detail-wrapper {
+    padding: 12px;
+  }
+
+  .detail-info h1 {
+    font-size: 1.08rem;
+  }
+
+  .detail-info .price {
+    font-size: 1.05rem;
   }
 }

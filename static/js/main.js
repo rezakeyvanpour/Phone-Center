@@ -415,24 +415,36 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (cart.length === 0) {
-        alert('سبد خرید شما خالی است!');
-        return;
-      }
+  checkoutBtn.addEventListener('click', function(e) {
+    e.preventDefault();
 
-      const total = calculateTotal();
-      const items = cart.map(item => `${item.name} × ${item.quantity}`).join('\n');
-      
-      alert(`✅ سفارش شما با موفقیت ثبت شد!\n\n📦 محصولات:\n${items}\n\n💰 جمع کل: ${total.toLocaleString('en-US')} تومان\n\nبا تشکر از خرید شما ❤️`);
-      
-      cart = [];
-      renderCart();
-      updateCartBadge();
-      closeCartModalFunc();
+    if (cart.length === 0) {
+      alert('سبد خرید شما خالی است!');
+      return;
+    }
+
+    if (
+      !window.PhoneCenterCheckout ||
+      typeof window.PhoneCenterCheckout.open !== 'function'
+    ) {
+      console.error('Checkout module is not available.');
+      return;
+    }
+
+    closeCartModalFunc();
+
+    window.PhoneCenterCheckout.open({
+      items: cart,
+
+      onCompleted: function() {
+        cart = [];
+        renderCart();
+        updateCartBadge();
+      }
     });
-  }
+  });
+}
+  
   updateCartBadge();
   console.log('✅ سبد خرید با موفقیت راه‌اندازی شد!');
   console.log('📌 دکمه سبد خرید در هدر فعال شد');

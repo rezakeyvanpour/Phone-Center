@@ -119,15 +119,38 @@ document.addEventListener('DOMContentLoaded', function() {
       if (confirm('خالی کردن سبد؟')) { cart = []; renderCart(); updateCartBadge(); closeCartModalFunc(); }
     });
   }
+  
   if (checkoutBtn) {
-    checkoutBtn.addEventListener('click', function() {
-      if (cart.length === 0) { alert('سبد خالی است!'); return; }
-      const total = calculateTotal();
-      const items = cart.map(i => `${i.name} × ${i.quantity}`).join('\n');
-      alert(`✅ سفارش ثبت شد!\n\n${items}\n\nجمع کل: ${formatPrice(total)} تومان`);
-      cart = []; renderCart(); updateCartBadge(); closeCartModalFunc();
+  checkoutBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    if (cart.length === 0) {
+      alert('سبد خرید شما خالی است!');
+      return;
+    }
+
+    if (
+      !window.PhoneCenterCheckout ||
+      typeof window.PhoneCenterCheckout.open !== 'function'
+    ) {
+      console.error('Checkout module is not available.');
+      return;
+    }
+
+    closeCartModalFunc();
+
+    window.PhoneCenterCheckout.open({
+      items: cart,
+
+      onCompleted: function() {
+        cart = [];
+        renderCart();
+        updateCartBadge();
+      }
     });
-  }
+  });
+}
+
 
   if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', function() { mobileMenu.classList.toggle('open'); });

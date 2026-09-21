@@ -137,24 +137,6 @@
   box-shadow: var(--shadow-hover);
 }
 
-@media (max-width: 768px) {
-  .back-home-btn span {
-    display: none;
-  }
-  .back-home-btn svg {
-    width: 20px;
-    height: 20px;
-  }
-  .filter-btn {
-    font-size: 0.75rem;
-    padding: 6px 12px;
-  }
-  .main-content {
-    padding-top: 0 !important;
-  }
-}
-
-
 .cart-item {
   display: flex;
   align-items: center;
@@ -202,3 +184,122 @@
   background-color: rgba(220, 38, 38, 0.1);
   transform: scale(1.1);
 }
+
+/* ==========================================================
+   Products Page Responsive Refinement
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 8px 0 0 !important;
+  }
+
+  .main-content > div {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 12px;
+  }
+
+  .main-content > div > div:first-child {
+    min-width: 0;
+    gap: 12px;
+    margin-bottom: 18px;
+    align-items: flex-start;
+  }
+
+  .main-content h1 {
+    min-width: 0;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .filter-wrapper {
+    width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
+    padding-bottom: 4px;
+  }
+
+  .filter-btn {
+    min-height: 36px;
+    padding: 7px 12px;
+    font-size: 0.75rem;
+  }
+
+  .product-card {
+    min-width: 0;
+  }
+
+  .product-card > div:last-child {
+    min-width: 0;
+    padding: 14px;
+  }
+
+  .product-card .product-name {
+    height: auto;
+    min-height: 2.8rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .btn-add-to-cart {
+    min-height: 42px;
+    padding-inline: 10px;
+    font-size: 0.8rem;
+  }
+
+  .footer-mini {
+    margin-top: 28px;
+    padding: 16px 12px;
+  }
+
+  .footer-mini > div {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-mini > div > p {
+    min-width: 0;
+    line-height: 1.9;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content > div {
+    padding-inline: 10px;
+  }
+
+  .main-content h1 {
+    font-size: 1.2rem;
+  }
+
+  .filter-wrapper {
+    gap: 6px;
+  }
+
+  .filter-btn {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 0.72rem;
+  }
+
+  .product-card > div:last-child {
+    padding: 12px;
+  }
+
+  .product-card .product-name {
+    font-size: 0.85rem;
+  }
+
+  .footer-mini {
+    padding-inline: 10px;
+  }
+
+  .footer-mini > div > p {
+    font-size: 0.76rem;
+  }
+}
+

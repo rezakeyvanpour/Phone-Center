@@ -229,12 +229,6 @@
   padding-right: 24px;
 }
 
-@media (max-width: 768px) {
-  .dropdown-menu {
-    display: none !important;
-  }
-}
-
 .nav-extra {
   display: flex;
   align-items: center;
@@ -314,42 +308,6 @@
   height: 20px;
 }
 
-/* Showing hamburger on mobile */
-@media (max-width: 768px) {
-  .btn-hamburger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-list {
-    display: none;
-  }
-
-  .mobile-menu.open {
-    display: flex;
-  }
-
-  .search-form {
-    max-width: 100%;
-  }
-
-  .header-right {
-    gap: 12px;
-  }
-
-  .logo {
-    height: 40px;
-  }
-
-  .btn-login span {
-    display: none;
-  }
-
-  .btn-login {
-    padding: 8px 12px;
-  }
-}
 
 /* Middle section of the page */
 .main-content {
@@ -948,6 +906,797 @@
   * {
     scrollbar-color: var(--primary) var(--bg-body);
     scrollbar-width: thin;
+  }
+}
+
+/* ==========================================================
+   Responsive System
+   Shared Header + Homepage + Cart
+   ========================================================== */
+
+@media (max-width: 1024px) {
+  /* ---------- Header ---------- */
+  .header-top {
+    padding-inline: 14px;
+  }
+
+  .header-top-inner {
+    max-width: 100%;
+    gap: 14px;
+  }
+
+  .header-right {
+    min-width: 0;
+    gap: 14px;
+  }
+
+  .search-form {
+    min-width: 0;
+    max-width: 420px;
+  }
+
+  .navbar {
+    padding-inline: 14px;
+  }
+
+  .navbar-inner {
+    max-width: 100%;
+    gap: 20px;
+  }
+
+  .nav-list {
+    gap: 18px;
+  }
+
+  /* ---------- Homepage Hero ---------- */
+  .about-section {
+    gap: 24px;
+  }
+
+  .about-text {
+    flex-basis: 40%;
+    margin-top: 35px;
+  }
+
+  .about-banner {
+    height: 300px;
+  }
+
+  /* ---------- Homepage Trust Boxes ---------- */
+  section.trust-boxes {
+    gap: 20px;
+  }
+
+  section.trust-boxes .trust-box {
+    width: 100%;
+    height: 150px;
+  }
+
+  /* ---------- Homepage Featured Products ---------- */
+  body > main.main-content + section #productsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  /* ---------- Homepage Footer ---------- */
+  body .footer-inner {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* ========================================================
+     Header
+     ======================================================== */
+
+  .header-top {
+    padding: 10px 12px 8px;
+  }
+
+  .header-top-inner {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .header-right {
+    min-width: 0;
+    flex: 1 1 auto;
+    gap: 8px;
+  }
+
+  .header-left {
+    flex: 0 0 auto;
+    gap: 2px;
+  }
+
+  .search-form {
+    min-width: 0;
+    max-width: none;
+    flex: 1 1 auto;
+  }
+
+  .search-input {
+    height: 40px;
+    padding-right: 36px;
+    padding-left: 10px;
+    font-size: 0.82rem;
+  }
+
+  .search-icon {
+    right: 10px;
+    width: 18px;
+    height: 18px;
+  }
+
+  .logo {
+    height: 40px !important;
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .back-home-btn {
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+    justify-content: center;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .back-home-btn span {
+    display: none;
+  }
+
+  .back-home-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  .btn-login {
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+    gap: 0;
+  }
+
+  .btn-login span {
+    display: none;
+  }
+
+  .btn-cart,
+  .btn-hamburger {
+    width: 42px;
+    height: 42px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-login,
+  .icon-cart,
+  .icon-hamburger {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cart-badge {
+    top: -1px;
+    right: -1px;
+    width: 18px;
+    height: 18px;
+    font-size: 0.62rem;
+  }
+
+  .btn-hamburger {
+    display: flex;
+  }
+
+  /* ========================================================
+     Navigation / Mobile Menu
+     ======================================================== */
+
+  .navbar {
+    padding: 0 12px 10px;
+  }
+
+  .navbar-inner {
+    width: 100%;
+    max-width: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .nav-extra,
+  .nav-list {
+    display: none;
+  }
+
+  .dropdown-menu {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none;
+    width: 100%;
+    max-height: 52vh;
+    margin-top: 8px;
+    padding: 10px 0 2px;
+    gap: 4px;
+    overflow-y: auto;
+    border-top: 1px solid var(--border);
+  }
+
+  .mobile-menu.open {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 9px 12px;
+  }
+
+  .mobile-login {
+    gap: 8px;
+  }
+
+  /* ========================================================
+     Homepage / Hero
+     ======================================================== */
+
+  .main-content {
+    padding: 10px 12px 0;
+  }
+
+  .about-section {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 10px 0 4px;
+  }
+
+  .about-text {
+    width: 100%;
+    flex: 0 0 auto;
+    margin-top: 0;
+    gap: 12px;
+  }
+
+  .about-title {
+    font-size: 1.35rem;
+    line-height: 1.65;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .about-paragraph {
+    font-size: 0.85rem;
+    line-height: 1.95;
+    text-align: right;
+    word-spacing: 0;
+  }
+
+  .about-text .btn-products {
+    width: 100%;
+    min-height: 46px;
+    align-self: stretch;
+  }
+
+  .about-banner {
+    width: 100%;
+    flex: 0 0 auto;
+    height: clamp(190px, 55vw, 280px);
+    margin-top: 0;
+    border-radius: 12px;
+  }
+
+  /* ========================================================
+     Homepage Featured Products
+     ======================================================== */
+
+  body > main.main-content + section {
+    width: 100%;
+    max-width: 1400px;
+    padding: 10px 12px 0;
+  }
+
+  body > main.main-content + section > div:first-child {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  body > main.main-content + section h2 {
+    font-size: 1.25rem;
+  }
+
+  body > main.main-content + section > div:first-child > a {
+    font-size: 0.78rem;
+  }
+
+  body > main.main-content + section #productsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  body > main.main-content + section .product-card {
+    min-width: 0;
+  }
+
+  body > main.main-content + section .product-card > div:last-child {
+    padding: 14px;
+  }
+
+  body > main.main-content + section .product-name {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    height: auto;
+    min-height: 2.8rem;
+  }
+
+  body > main.main-content + section .btn-add-to-cart {
+    min-height: 42px;
+    font-size: 0.78rem;
+  }
+
+  /* ========================================================
+     Homepage Trust / Benefits
+     ======================================================== */
+
+  section.trust-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    height: auto;
+    gap: 14px;
+    padding: 10px 12px;
+    margin-top: 18px;
+  }
+
+  section.trust-boxes .trust-box {
+    width: 100%;
+    height: 150px;
+    min-width: 0;
+    padding: 24px 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  section.trust-boxes .trust-box svg {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 8px;
+  }
+
+  /* ========================================================
+     Homepage Footer
+     ======================================================== */
+
+  .footer-container {
+    margin-top: 42px;
+    padding: 32px 12px 0;
+  }
+
+  body .footer-inner {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 20px;
+    padding-bottom: 24px;
+  }
+
+  .footer-column {
+    min-width: 0;
+  }
+
+  .footer-description,
+  .contact-item,
+  .footer-list li a {
+    line-height: 1.9;
+  }
+
+  .footer-logo {
+    height: 44px !important;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    padding: 14px 0;
+  }
+
+  .footer-bottom-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-copy {
+    line-height: 1.9;
+  }
+
+  /* ========================================================
+     Cart Modal
+     ======================================================== */
+
+  #cartModal {
+    padding: 12px;
+  }
+
+  #cartModal > div {
+    width: 100%;
+    max-width: 680px;
+    max-height: calc(100dvh - 24px);
+  }
+
+  #cartItemsContainer {
+    max-height: 48vh;
+  }
+
+  .cart-item {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .cart-item-image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .cart-item-controls {
+    gap: 5px;
+  }
+
+  .cart-qty-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .cart-qty-number {
+    width: 24px;
+    font-size: 0.85rem;
+  }
+
+  #cartModal > div > div:first-child {
+    padding: 12px;
+  }
+
+  #cartModal > div > div:first-child h3 {
+    font-size: 1.05rem;
+  }
+
+  #cartModal > div > div:last-child {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* ---------- Header ---------- */
+
+  .header-top {
+    padding: 8px 10px 6px;
+  }
+
+  .header-top-inner,
+  .header-right {
+    gap: 6px;
+  }
+
+  .logo {
+    height: 36px !important;
+  }
+
+  .back-home-btn {
+    width: 38px;
+    height: 38px;
+    padding: 6px;
+  }
+
+  .search-input {
+    height: 38px;
+    padding-right: 34px;
+    font-size: 0.78rem;
+  }
+
+  .search-icon {
+    width: 17px;
+    height: 17px;
+    right: 9px;
+  }
+
+  .btn-login,
+  .btn-cart,
+  .btn-hamburger {
+    width: 38px;
+    height: 38px;
+  }
+
+  .icon-login,
+  .icon-cart,
+  .icon-hamburger {
+    width: 22px;
+    height: 22px;
+  }
+
+  .cart-badge {
+    width: 17px;
+    height: 17px;
+    font-size: 0.58rem;
+  }
+
+  /* ---------- Navigation ---------- */
+
+  .navbar {
+    padding: 0 10px 8px;
+  }
+
+  .mobile-menu {
+    max-height: 58vh;
+  }
+
+  .mobile-menu a {
+    min-height: 40px;
+    padding-inline: 10px;
+    font-size: 0.8rem;
+  }
+
+  /* ---------- Homepage Hero ---------- */
+
+  .about-title {
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  .about-paragraph {
+    font-size: 0.8rem;
+  }
+
+  .about-banner {
+    height: 190px;
+  }
+
+  /* ---------- Homepage Featured ---------- */
+
+  body > main.main-content + section {
+    padding-inline: 10px;
+  }
+
+  body > main.main-content + section #productsGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  body > main.main-content + section .product-card > div:last-child {
+    padding: 12px;
+  }
+
+  body > main.main-content + section h2 {
+    font-size: 1.15rem;
+  }
+
+  body > main.main-content + section > div:first-child > a {
+    font-size: 0.74rem;
+  }
+
+  /* ---------- Homepage Trust Boxes ---------- */
+
+  section.trust-boxes {
+    gap: 12px;
+    padding-inline: 10px;
+  }
+
+  section.trust-boxes .trust-box {
+    height: 138px;
+    padding: 20px 10px;
+    font-size: 0.78rem;
+  }
+
+  section.trust-boxes .trust-box svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* ---------- Homepage Footer ---------- */
+
+  .footer-container {
+    margin-top: 34px;
+    padding-inline: 10px;
+  }
+
+  body .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+
+  .footer-description {
+    text-align: right;
+  }
+
+  .footer-title {
+    font-size: 0.98rem;
+  }
+
+  .contact-item {
+    font-size: 0.76rem;
+  }
+
+  .footer-bottom-inner {
+    gap: 10px;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+  }
+
+  /* ---------- Cart ---------- */
+
+  #cartModal {
+    padding: 8px;
+  }
+
+  #cartModal > div {
+    max-height: calc(100dvh - 16px);
+    border-radius: 12px;
+  }
+
+  #cartItemsContainer {
+    max-height: 46vh;
+    padding: 12px;
+  }
+
+  .cart-item {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    align-items: start;
+    gap: 8px 10px;
+    padding: 9px;
+  }
+
+  .cart-item-image {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cart-item-info {
+    min-width: 0;
+  }
+
+  .cart-item-name,
+  .cart-item-info > div:first-child {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: anywhere;
+    line-height: 1.55;
+  }
+
+  .cart-item > :last-child {
+    grid-column: 2;
+    width: 100%;
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+  }
+
+  .cart-qty-btn {
+    width: 29px;
+    height: 29px;
+    font-size: 0.95rem;
+  }
+
+  .cart-qty-number {
+    width: 22px;
+    font-size: 0.78rem;
+  }
+
+  .cart-remove-btn {
+    margin-right: 0;
+  }
+
+  #cartModal > div > div:first-child {
+    padding: 10px 12px;
+  }
+
+  #cartModal > div > div:first-child h3 {
+    font-size: 0.95rem;
+  }
+
+  #cartModal > div > div:last-child {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  #cartModal > div > div:last-child > div:first-child {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  #cartModal > div > div:last-child > div:last-child {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  #cartModal > div > div:last-child button {
+    min-height: 40px;
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-top {
+    padding-inline: 8px;
+  }
+
+  .navbar {
+    padding-inline: 8px;
+  }
+
+  .logo {
+    height: 34px !important;
+  }
+
+  .back-home-btn,
+  .btn-login,
+  .btn-cart,
+  .btn-hamburger {
+    width: 36px;
+    height: 36px;
+  }
+
+  .search-input {
+    height: 36px;
+    font-size: 0.74rem;
+  }
+
+  .icon-login,
+  .icon-cart,
+  .icon-hamburger {
+    width: 21px;
+    height: 21px;
+  }
+
+  .about-title {
+    font-size: 1.12rem;
+  }
+
+  .about-banner {
+    height: 180px;
+  }
+
+  section.trust-boxes .trust-box {
+    height: 132px;
+    padding-inline: 8px;
+    font-size: 0.74rem;
+  }
+
+  section.trust-boxes .trust-box svg {
+    width: 46px;
+    height: 46px;
+  }
+
+  #cartModal > div > div:last-child > div:last-child {
+    grid-template-columns: 1fr;
   }
 }
 
